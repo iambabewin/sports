@@ -1,0 +1,49 @@
+.bg {
+  background: #fff;
+}
+
+.systemTitle {
+  height: 45px;
+  line-height: 45px;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.heads {
+  height:50px;
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding: 0;
+  font-size:17px;
+  line-height: 50px;
+  color:#232741;
+}
+
+.content {
+  margin: 0px 16px 0;
+}
+
+.footer {
+  text-align: center;
+}
+
+:global(.ant-layout) {
+  height: 100%;
+}
+
+.trigger {
+  font-size: 18px;
+  line-height: 50px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+
