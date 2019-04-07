@@ -3,11 +3,11 @@ import {connect} from 'dva';
 import styles from './IndexPage.css';
 import Sidebar from './Sidebar';
 import HeadTitle from '../components/HeadTitle';
-import {Layout, Menu, Icon} from 'antd';
+import {Layout, Icon} from 'antd';
 import {Router, Route, Link, Redirect} from 'dva/router';
 import {Popover, Button} from 'antd';
-import ManageDepartment from '../components/department/ManageDepartment';
-
+import CollegeManage from '../components/college/CollegeManage';
+import ProfessionManage from '../components/profession/ProfessionManage';
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -26,6 +26,7 @@ class IndexPage extends React.Component {
   }
 
   render() {
+    const token = window.localStorage.getItem("token");
     return (
       <Layout>
         <Sider
@@ -47,7 +48,8 @@ class IndexPage extends React.Component {
             <div style={{marginRight: '30px'}}>
               <Popover
                 placement="bottomRight"
-                content={<a onClick={()=> this.props.dispatch({type: 'user/logout'})}>安全退出</a>}
+                content={<a
+                  onClick={() => this.props.dispatch({type: 'user/logout', payload: {token: token}})}>安全退出</a>}
                 trigger="click"
                 visible={this.state.visible}
                 onVisibleChange={this.handleVisibleChange}
@@ -59,7 +61,8 @@ class IndexPage extends React.Component {
           <Content className={styles['content']}>
             <HeadTitle title={this.props.match.params.id}/>
             <div className={styles['bg']}></div>
-            <Route path="/departmentManage" component={ManageDepartment} />
+            <Route path="/collegeManage" component={CollegeManage}/>
+            <Route path="/professionManage" component={ProfessionManage}/>
           </Content>
           <Footer className={styles['footer']}>
             copyright ©2019 WIN All Rights Reserved

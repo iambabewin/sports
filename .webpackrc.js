@@ -8,12 +8,11 @@ export default {
     Components: path.resolve(__dirname, 'src/components/'),
     Utils: path.resolve(__dirname, 'src/utils/'),
   },
-  proxy: {
-    "/api":{
-      target: "http://sports.handley.cn",
-      changeOrigin: true
-    },
-
+  "proxy": {
+    "/api": {
+      "target": "http://sports.handley.cn",
+      "changeOrigin": true
+    }
   },
   copy: [
     {

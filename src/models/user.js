@@ -3,31 +3,37 @@ import {message} from 'antd';
 
 export default {
   namespace: 'user',
-  state: {
-    adminInfo: {
-      username: ''
-    }
+  state: {},
+
+  subscriptions: {
+    setup({dispatch, history}) {
+      if (window.location.pathname !== '/login') {
+        const token = window.localStorage.getItem('token');
+        if(!token){
+          window.location = '/login';
+        }
+      }
+    },
   },
+
   effects: {
     * login({payload}, {call, put}) {
       try {
         const {data} = yield call(userServeices.login, payload);
         if (data && data.ret === 0) {
-          message.success(data.msg);
+          message.success("登录成功");
           window.localStorage.setItem('token', data.data.token);
-          window.location = '/managerInfo';
+          window.location = '/collegeManage';
         } else {
-          message.error('random error');
+          message.error("登录失败");
         }
       } catch (error) {
         message.error(error);
       }
-      // return data.ret;
     },
 
     * logout({payload}, {call, put}) {
       const {data} = yield call(userServeices.logout, payload);
-
       if (data && data.ret === 0) {
         message.success(data.msg);
         window.localStorage.setItem('token', '');
@@ -35,7 +41,6 @@ export default {
       } else {
         message.error(data.msg);
       }
-      return data.ret;
     },
 
   },
