@@ -24,6 +24,7 @@ class ProfessionModal extends React.Component {
   }
 
   render() {
+    const { college_id } = this.props;
     return (
       <Modal
         className="modal"
@@ -39,7 +40,7 @@ class ProfessionModal extends React.Component {
         <div className="input" style={{marginBottom: '20px'}}>
           <div className="title">所属院系</div>
           <Select style={{width: '100%'}}
-                  value={this.props.college_id}
+                  value={college_id && parseInt(college_id)}
                   onChange={(value) => {
                     this.props.onSelectChange(value);
                     console.log(value)
