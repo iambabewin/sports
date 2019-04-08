@@ -7,12 +7,11 @@ export default {
     collegeList: {
       list: []
     },
+    allCollegeList: []
   },
   effects: {
-    /**
-     * 添加院系
-     */
-    *AddCollege({payload}, {call, put}) {
+
+    * AddCollege({payload}, {call, put}) {
       const {data} = yield call(college.AddCollege, payload);
       if (data && data.ret === 0) {
         message.success('添加成功');
@@ -22,10 +21,7 @@ export default {
       }
     },
 
-    /**
-     * 删除院系
-     */
-    *DelCollege({payload}, {call, put}) {
+    * DelCollege({payload}, {call, put}) {
       const {data} = yield call(college.DelCollege, payload);
       if (data && data.ret === 0) {
         message.success('删除成功');
@@ -35,10 +31,7 @@ export default {
       }
     },
 
-    /**
-     * 获取院系
-     */
-    *GetCollege({payload}, {call, put}) {
+    * GetCollege({payload}, {call, put}) {
       try {
         const {data} = yield call(college.GetCollege, payload);
         if (data && data.ret === 0) {
@@ -55,10 +48,24 @@ export default {
       }
     },
 
-    /**
-     * 更新院系
-     */
-    *EditCollege({payload}, {call, put}) {
+    * GetAllCollege({payload}, {call, put}) {
+      try {
+        const {data} = yield call(college.GetAllCollege, payload);
+        if (data && data.ret === 0) {
+          yield put({
+            type: 'save',
+            payload: {allCollegeList: data.data}
+          });
+          return data.ret;
+        } else {
+          message.error(data.msg);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
+    },
+
+    * EditCollege({payload}, {call, put}) {
       console.log(payload);
       const {data} = yield call(college.EditCollege, payload);
       if (data && data.ret === 0) {

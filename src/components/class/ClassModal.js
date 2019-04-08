@@ -6,7 +6,7 @@ import '../style.less'
 const Option = Select.Option;
 const token = window.localStorage.getItem("token");
 
-class ProfessionModal extends React.Component {
+class ClassModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {}
@@ -14,7 +14,7 @@ class ProfessionModal extends React.Component {
 
   componentDidMount() {
     this.props.dispatch({
-      type: 'college/GetAllCollege',
+      type: 'profession/GetAllProfession',
       payload: {
         token: token
       }
@@ -22,7 +22,7 @@ class ProfessionModal extends React.Component {
   }
 
   render() {
-    const { college_id } = this.props;
+    const {profession_id} = this.props;
     return (
       <Modal
         className="modal"
@@ -36,22 +36,23 @@ class ProfessionModal extends React.Component {
         cancelText="取消"
       >
         <div className="input" style={{marginBottom: '20px'}}>
-          <div className="title">所属院系</div>
+          <div className="title">所属专业</div>
           <Select style={{width: '100%'}}
-                  value={college_id && parseInt(college_id)}
+                  value={profession_id && parseInt(profession_id)}
                   onChange={(value) => {
                     this.props.onSelectChange(value);
                   }}>
             {
-              this.props.allCollegeList.map((college) => {
-                return <Option key={college.college_id} value={college.college_id}>{college.college_name}</Option>
+              this.props.allProfessionList.map((profession) => {
+                return <Option key={profession.profession_id}
+                               value={profession.profession_id}>{profession.profession_name}</Option>
               })
             }
           </Select>
         </div>
         <div className="input">
-          <div className="title">专业名称</div>
-          <Input value={this.props.profession_name} onChange={(e) => this.props.onChange(e.target.value)}/>
+          <div className="title">班级名称</div>
+          <Input value={this.props.class_name} onChange={(e) => this.props.onChange(e.target.value)}/>
         </div>
       </Modal>
     )
@@ -60,8 +61,8 @@ class ProfessionModal extends React.Component {
 
 export default connect((state) => {
   return {
-    allCollegeList: state.college.allCollegeList
+    allProfessionList: state.profession.allProfessionList
   }
-})(ProfessionModal);
+})(ClassModal);
 
 

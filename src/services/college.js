@@ -4,6 +4,10 @@ export async function GetCollege(params) {
   return request(`http://sports.handley.cn/college?token=${params.token}&location=${params.location}&limit=${params.limit}`);
 }
 
+export async function GetAllCollege(params) {
+  return request(`http://sports.handley.cn/college/all?token=${params.token}`);
+}
+
 export async function AddCollege(params) {
   return request('http://sports.handley.cn/college', {
     method: 'POST',

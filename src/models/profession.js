@@ -7,12 +7,11 @@ export default {
     professionList: {
       list: []
     },
+    allProfessionList: []
   },
   effects: {
-    /**
-     * 添加专业
-     */
-      *AddProfession({payload}, {call, put}) {
+
+    * AddProfession({payload}, {call, put}) {
       const {data} = yield call(profession.AddProfession, payload);
       if (data && data.ret === 0) {
         message.success('添加成功');
@@ -22,10 +21,7 @@ export default {
       }
     },
 
-    /**
-     * 删除专业
-     */
-      *DelProfession({payload}, {call, put}) {
+    * DelProfession({payload}, {call, put}) {
       const {data} = yield call(profession.DelProfession, payload);
       if (data && data.ret === 0) {
         message.success('删除成功');
@@ -35,10 +31,7 @@ export default {
       }
     },
 
-    /**
-     * 获取专业
-     */
-      *GetProfession({payload}, {call, put}) {
+    * GetProfession({payload}, {call, put}) {
       try {
         const {data} = yield call(profession.GetProfession, payload);
         if (data && data.ret === 0) {
@@ -55,10 +48,25 @@ export default {
       }
     },
 
-    /**
-     * 更新院系
-     */
-      *EditProfession({payload}, {call, put}) {
+    * GetAllProfession({payload}, {call, put}) {
+      try {
+        const {data} = yield call(profession.GetAllProfession, payload);
+        if (data && data.ret === 0) {
+          yield put({
+            type: 'save',
+            payload: {allProfessionList: data.data}
+          });
+          return data.ret;
+        } else {
+          message.error(data.msg);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
+    },
+
+
+    * EditProfession({payload}, {call, put}) {
       const {data} = yield call(profession.EditProfession, payload);
       if (data && data.ret === 0) {
         message.success('修改成功');

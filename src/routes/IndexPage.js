@@ -8,6 +8,7 @@ import {Router, Route, Link, Redirect} from 'dva/router';
 import {Popover, Button} from 'antd';
 import CollegeManage from '../components/college/CollegeManage';
 import ProfessionManage from '../components/profession/ProfessionManage';
+import ClassManage from '../components/class/ClassManage';
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -63,6 +64,7 @@ class IndexPage extends React.Component {
             <div className={styles['bg']}></div>
             <Route path="/collegeManage" component={CollegeManage}/>
             <Route path="/professionManage" component={ProfessionManage}/>
+            <Route path="/classManage" component={ClassManage}/>
           </Content>
           <Footer className={styles['footer']}>
             copyright ©2019 WIN All Rights Reserved
