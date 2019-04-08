@@ -1,18 +1,16 @@
-import * as college from '../services/college';
+import * as year from '../services/year';
 import {message} from 'antd';
 
 export default {
-  namespace: 'college',
+  namespace: 'year',
   state: {
-    collegeList: {
+    yearList: {
       list: []
     },
-    allCollegeList: []
   },
   effects: {
-
-    * AddCollege({payload}, {call, put}) {
-      const {data} = yield call(college.AddCollege, payload);
+    * AddYear({payload}, {call, put}) {
+      const {data} = yield call(year.AddYear, payload);
       if (data && data.ret === 0) {
         message.success('添加成功');
         return data.ret;
@@ -21,8 +19,8 @@ export default {
       }
     },
 
-    * DelCollege({payload}, {call, put}) {
-      const {data} = yield call(college.DelCollege, payload);
+    * DelYear({payload}, {call, put}) {
+      const {data} = yield call(year.DelYear, payload);
       if (data && data.ret === 0) {
         message.success('删除成功');
         return data.ret;
@@ -31,13 +29,13 @@ export default {
       }
     },
 
-    * GetCollege({payload}, {call, put}) {
+    * GetYear({payload}, {call, put}) {
       try {
-        const {data} = yield call(college.GetCollege, payload);
+        const {data} = yield call(year.GetYear, payload);
         if (data && data.ret === 0) {
           yield put({
             type: 'save',
-            payload: {collegeList: data.data}
+            payload: {yearList: data.data}
           });
           return data.ret;
         } else {
@@ -48,25 +46,8 @@ export default {
       }
     },
 
-    * GetAllCollege({payload}, {call, put}) {
-      try {
-        const {data} = yield call(college.GetAllCollege, payload);
-        if (data && data.ret === 0) {
-          yield put({
-            type: 'save',
-            payload: {allCollegeList: data.data}
-          });
-          return data.ret;
-        } else {
-          message.error(data.msg);
-        }
-      } catch (error) {
-        message.error(error.message);
-      }
-    },
-
-    * EditCollege({payload}, {call, put}) {
-      const {data} = yield call(college.EditCollege, payload);
+    * EditYear({payload}, {call, put}) {
+      const {data} = yield call(year.EditYear, payload);
       if (data && data.ret === 0) {
         message.success('修改成功');
         return data.ret;

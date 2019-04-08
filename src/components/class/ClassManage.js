@@ -168,6 +168,7 @@ class ClassManage extends React.Component {
       <div style={{position: 'relative'}}>
         <Button className="addBtn" onClick={this.showAddModal}>新增班级</Button>
         <Table
+          className="manageTable"
           rowKey={record => record.class_id}
           columns={columns}
           dataSource={classList.list}

@@ -2,32 +2,32 @@ import React from 'react';
 import {connect} from 'dva';
 import '../style.less';
 import {Table, Divider, Button, Popconfirm} from 'antd';
-import CollegeModal from './CollegeModal';
+import YearModal from './YearModal';
 
 const limit = 6;
 const token = window.localStorage.getItem("token");
 
-class CollegeManage extends React.Component {
+class YearManage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       loadingList: true,
-      editVisible: false, // 编辑院系模态框
-      addVisible: false, // 添加院系模态框
+      editVisible: false,
+      addVisible: false,
       current: 1,
-      college_id: '',
-      college_name: '',
+      year_id: '',
+      year_name: '',
     }
   }
 
   componentDidMount() {
-    this.getCollege()
+    this.getYear()
   }
 
-  getCollege = (page) => {
+  getYear = (page) => {
     const location = (page - 1) * limit;
     this.props.dispatch({
-      type: 'college/GetCollege',
+      type: 'year/GetYear',
       payload: {
         token: token,
         location: location,
@@ -39,66 +39,66 @@ class CollegeManage extends React.Component {
       this.setState({loadingList: false})
     })
   };
-  delCollege = (id) => {
+  delYear = (id) => {
     this.props.dispatch({
-      type: 'college/DelCollege',
+      type: 'year/DelYear',
       payload: {
         token: token,
-        college_id: id,
+        year_id: id,
       }
     }).then((ret) => {
       if (ret === 0) {
-        this.getCollege()
+        this.getYear()
       }
     })
   };
   showEditModal = (e, record) => {
     this.setState({
       editVisible: true,
-      college_name: record.college_name,
-      college_id: record.college_id,
+      year_id: record.year_id,
+      year_name: record.year_name,
     });
   };
   showAddModal = () => {
     this.setState({
-      college_name: '',
+      year_name: '',
       addVisible: true
     });
   };
-  editCollege = () => {
+  editYear = () => {
     this.props.dispatch({
-      type: 'college/EditCollege',
+      type: 'year/EditYear',
       payload: {
         token: token,
-        college_id: this.state.college_id,
-        college_name: this.state.college_name,
+        year_id: this.state.year_id,
+        year_name: this.state.year_name,
       }
     }).then((ret) => {
       if (ret === 0) {
         this.setState({
           editVisible: false,
         });
-        this.getCollege();
+        this.getYear();
       }
     })
   };
-  addCollege = () => {
+  addYear = () => {
     this.props.dispatch({
-      type: 'college/AddCollege',
+      type: 'year/AddYear',
       payload: {
         token: token,
-        college_name: this.state.college_name,
+        year_name: this.state.year_name,
       }
     }).then((ret) => {
       if (ret === 0) {
-        this.getCollege();
+        this.getYear();
         this.onClean()
       }
     })
   };
   onClean = () => {
     this.setState({
-      college_name: '',
+      year_name: '',
       addVisible: false,
       current: 1
     })
@@ -112,13 +112,13 @@ class CollegeManage extends React.Component {
 
   render() {
     const columns = [{
-      title: '院系编号',
-      dataIndex: 'college_id',
-      key: 'college_id',
+      title: '历届编号',
+      dataIndex: 'year_id',
+      key: 'year_id',
     }, {
-      title: '院系名称',
-      dataIndex: 'college_name',
-      key: 'college_name',
+      title: '历届名称',
+      dataIndex: 'year_name',
+      key: 'year_name',
     }, {
       title: '操作',
       key: 'action',
@@ -126,21 +126,21 @@ class CollegeManage extends React.Component {
         <span>
           <a className="editBtn" onClick={(e) => this.showEditModal(e, record)}>编辑</a>
           <Divider type="vertical"/>
-          <Popconfirm title="确定要删除这个院系吗?" onConfirm={() => this.delCollege(record.college_id)}>
+          <Popconfirm title="确定要删除这届吗?" onConfirm={() => this.delYear(record.year_id)}>
             <a className="deleteBtn">删除</a>
           </Popconfirm>
         </span>
       ),
     }];
-    const {collegeList} = this.props;
+    const {yearList} = this.props;
     const pagination = {
-      total: collegeList.total,
+      total: yearList.total,
       pageSize: limit,
       onChange: (page) => {
         const location = (page - 1) * limit;
         this.setState({current: page});
         this.props.dispatch({
-          type: 'college/GetCollege',
+          type: 'year/GetYear',
           payload: {
             token: token,
             location: location,
@@ -152,31 +152,29 @@ class CollegeManage extends React.Component {
 
     return (
       <div style={{position: 'relative'}}>
-        <Button className="addBtn" onClick={this.showAddModal}>新增院系</Button>
+        <Button className="addBtn" onClick={this.showAddModal}>新增届</Button>
         <Table
           className="manageTable"
-          rowKey={record => record.college_id}
+          rowKey={record => record.year_id}
           columns={columns}
-          dataSource={collegeList.list}
+          dataSource={yearList.list}
           pagination={pagination}/>
 
-        {/*编辑院系模态框*/}
-        <CollegeModal
-          onChange={(v) => this.setState({college_name: v})}
-          title="编辑院系"
-          college_name={this.state.college_name}
+        <YearModal
+          onChange={(v) => this.setState({year_name: v})}
+          title="编辑届信息"
+          year_name={this.state.year_name}
           visible={this.state.editVisible}
-          handleOk={this.editCollege}
+          handleOk={this.editYear}
           handleCancel={this.handleCancel}
         />
 
-        {/*新增院系模态框*/}
-        <CollegeModal
-          onChange={(v) => this.setState({college_name: v})}
-          title="新增院系"
-          college_name={this.state.college_name}
+        <YearModal
+          onChange={(v) => this.setState({year_name: v})}
+          title="新增届信息"
+          year_name={this.state.year_name}
           visible={this.state.addVisible}
-          handleOk={this.addCollege}
+          handleOk={this.addYear}
           handleCancel={this.handleCancel}
         />
       </div>
@@ -186,8 +184,8 @@ class CollegeManage extends React.Component {
 
 export default connect((state) => {
   return {
-    collegeList: state.college.collegeList
+    yearList: state.year.yearList
   }
-})(CollegeManage);
+})(YearManage);
 
 

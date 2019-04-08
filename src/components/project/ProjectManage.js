@@ -2,32 +2,33 @@ import React from 'react';
 import {connect} from 'dva';
 import '../style.less';
 import {Table, Divider, Button, Popconfirm} from 'antd';
-import CollegeModal from './CollegeModal';
+import ProjectModal from './ProjectModal';
 
 const limit = 6;
 const token = window.localStorage.getItem("token");
 
-class CollegeManage extends React.Component {
+class ProjectManage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       loadingList: true,
-      editVisible: false, // 编辑院系模态框
-      addVisible: false, // 添加院系模态框
+      editVisible: false,
+      addVisible: false,
       current: 1,
-      college_id: '',
-      college_name: '',
+      project_id: '',
+      project_name: '',
+      type: '',
     }
   }
 
   componentDidMount() {
-    this.getCollege()
+    this.getProject()
   }
 
-  getCollege = (page) => {
+  getProject = (page) => {
     const location = (page - 1) * limit;
     this.props.dispatch({
-      type: 'college/GetCollege',
+      type: 'project/GetProject',
       payload: {
         token: token,
         location: location,
@@ -39,66 +40,71 @@ class CollegeManage extends React.Component {
       this.setState({loadingList: false})
     })
   };
-  delCollege = (id) => {
+  delProject = (id) => {
     this.props.dispatch({
-      type: 'college/DelCollege',
+      type: 'project/DelProject',
       payload: {
         token: token,
-        college_id: id,
+        project_id: id,
       }
     }).then((ret) => {
       if (ret === 0) {
-        this.getCollege()
+        this.getProject()
       }
     })
   };
   showEditModal = (e, record) => {
     this.setState({
       editVisible: true,
-      college_name: record.college_name,
-      college_id: record.college_id,
+      project_name: record.project_name,
+      project_id: record.project_id,
+      type: record.type
     });
   };
   showAddModal = () => {
     this.setState({
-      college_name: '',
+      project_name: '',
+      type: '',
       addVisible: true
     });
   };
-  editCollege = () => {
+  editProject = () => {
     this.props.dispatch({
-      type: 'college/EditCollege',
+      type: 'project/EditProject',
       payload: {
         token: token,
-        college_id: this.state.college_id,
-        college_name: this.state.college_name,
+        project_id: this.state.project_id,
+        project_name: this.state.project_name,
+        type: this.state.type
       }
     }).then((ret) => {
       if (ret === 0) {
         this.setState({
           editVisible: false,
         });
-        this.getCollege();
+        this.getProject();
       }
     })
   };
-  addCollege = () => {
+  addProject = () => {
     this.props.dispatch({
-      type: 'college/AddCollege',
+      type: 'project/AddProject',
       payload: {
         token: token,
-        college_name: this.state.college_name,
+        project_name: this.state.project_name,
+        type: this.state.type
       }
     }).then((ret) => {
       if (ret === 0) {
-        this.getCollege();
+        this.getProject();
         this.onClean()
       }
     })
   };
   onClean = () => {
     this.setState({
-      college_name: '',
+      project_name: '',
+      type: '',
       addVisible: false,
       current: 1
     })
@@ -112,13 +118,18 @@ class CollegeManage extends React.Component {
 
   render() {
     const columns = [{
-      title: '院系编号',
-      dataIndex: 'college_id',
-      key: 'college_id',
+      title: '比赛项目编号',
+      dataIndex: 'project_id',
+      key: 'project_id',
     }, {
-      title: '院系名称',
-      dataIndex: 'college_name',
-      key: 'college_name',
+      title: '比赛项目名称',
+      dataIndex: 'project_name',
+      key: 'project_name',
+    }, {
+      title: '比赛项目类型',
+      dataIndex: 'type',
+      key: 'type',
+      render: type => (<span>{type == 1 ? '男子项目' : '女子项目'}</span>),
     }, {
       title: '操作',
       key: 'action',
@@ -126,21 +137,21 @@ class CollegeManage extends React.Component {
         <span>
           <a className="editBtn" onClick={(e) => this.showEditModal(e, record)}>编辑</a>
           <Divider type="vertical"/>
-          <Popconfirm title="确定要删除这个院系吗?" onConfirm={() => this.delCollege(record.college_id)}>
+          <Popconfirm title="确定要删除这个比赛项目吗?" onConfirm={() => this.delProject(record.project_id)}>
             <a className="deleteBtn">删除</a>
           </Popconfirm>
         </span>
       ),
     }];
-    const {collegeList} = this.props;
+    const {projectList} = this.props;
     const pagination = {
-      total: collegeList.total,
+      total: projectList.total,
       pageSize: limit,
       onChange: (page) => {
         const location = (page - 1) * limit;
         this.setState({current: page});
         this.props.dispatch({
-          type: 'college/GetCollege',
+          type: 'project/GetProject',
           payload: {
             token: token,
             location: location,
@@ -152,31 +163,33 @@ class CollegeManage extends React.Component {
 
     return (
       <div style={{position: 'relative'}}>
-        <Button className="addBtn" onClick={this.showAddModal}>新增院系</Button>
+        <Button className="addBtn" onClick={this.showAddModal}>新增项目</Button>
         <Table
           className="manageTable"
-          rowKey={record => record.college_id}
+          rowKey={record => record.project_id}
           columns={columns}
-          dataSource={collegeList.list}
+          dataSource={projectList.list}
           pagination={pagination}/>
 
-        {/*编辑院系模态框*/}
-        <CollegeModal
-          onChange={(v) => this.setState({college_name: v})}
-          title="编辑院系"
-          college_name={this.state.college_name}
+        <ProjectModal
+          onChange={(v) => this.setState({project_name: v})}
+          onSelectChange={(v) => this.setState({type: v})}
+          title="编辑项目"
+          project_name={this.state.project_name}
+          type={this.state.type}
           visible={this.state.editVisible}
-          handleOk={this.editCollege}
+          handleOk={this.editProject}
           handleCancel={this.handleCancel}
         />
 
-        {/*新增院系模态框*/}
-        <CollegeModal
-          onChange={(v) => this.setState({college_name: v})}
-          title="新增院系"
-          college_name={this.state.college_name}
+        <ProjectModal
+          onChange={(v) => this.setState({project_name: v})}
+          onSelectChange={(v) => this.setState({type: v})}
+          title="新增项目"
+          type={this.state.type}
+          project_name={this.state.project_name}
           visible={this.state.addVisible}
-          handleOk={this.addCollege}
+          handleOk={this.addProject}
           handleCancel={this.handleCancel}
         />
       </div>
@@ -186,8 +199,8 @@ class CollegeManage extends React.Component {
 
 export default connect((state) => {
   return {
-    collegeList: state.college.collegeList
+    projectList: state.project.projectList
   }
-})(CollegeManage);
+})(ProjectManage);
 
 
