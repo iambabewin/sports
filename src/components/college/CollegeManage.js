@@ -62,6 +62,7 @@ class CollegeManage extends React.Component {
   };
   showAddModal = () => {
     this.setState({
+      college_name: '',
       addVisible: true
     });
   };
@@ -105,7 +106,6 @@ class CollegeManage extends React.Component {
   };
   handleCancel = () => {
     this.setState({
-      college_name: '',
       editVisible: false,
       addVisible: false
     });
@@ -170,6 +170,7 @@ class CollegeManage extends React.Component {
           handleCancel={this.handleCancel}
         />
 
+        {/*新增院系模态框*/}
         <CollegeModal
           onChange={(v) => this.setState({college_name: v})}
           title="新增院系"

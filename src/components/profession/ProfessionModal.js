@@ -9,9 +9,7 @@ const token = window.localStorage.getItem("token");
 class ProfessionModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      college_id: ''
-    }
+    this.state = {}
   }
 
   componentDidMount() {
@@ -26,7 +24,6 @@ class ProfessionModal extends React.Component {
   }
 
   render() {
-    const {college_id} = this.state;
     return (
       <Modal
         className="modal"
@@ -42,8 +39,11 @@ class ProfessionModal extends React.Component {
         <div className="input" style={{marginBottom: '20px'}}>
           <div className="title">所属院系</div>
           <Select style={{width: '100%'}}
-                  value={college_id}
-                  onChange={(value) => this.setState({college_id: value})}>
+                  value={this.props.college_id}
+                  onChange={(value) => {
+                    this.props.onSelectChange(value);
+                    console.log(value)
+                  }}>
             {
               this.props.collegeList.list.map((college) => {
                 return <Option key={college.college_id} value={college.college_id}>{college.college_name}</Option>
@@ -53,9 +53,8 @@ class ProfessionModal extends React.Component {
         </div>
         <div className="input">
           <div className="title">专业名称</div>
-          <Input onChange={(e) => this.props.onChange(e.target.value)}/>
+          <Input value={this.props.profession_name} onChange={(e) => this.props.onChange(e.target.value)}/>
         </div>
-
       </Modal>
     )
   }

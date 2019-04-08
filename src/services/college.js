@@ -15,7 +15,7 @@ export async function AddCollege(params) {
 }
 
 export async function DelCollege(params) {
-  return request(`http://sports.handley.cn/college?token=${params.token}&college_id	=${params.college_id	}`, {
+  return request(`http://sports.handley.cn/college?token=${params.token}&college_id	=${params.college_id}`, {
     method: 'DELETE',
   });
 }
