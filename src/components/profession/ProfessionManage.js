@@ -4,7 +4,7 @@ import '../style.less';
 import {Table, Divider, Button, Popconfirm} from 'antd';
 import ProfessionModal from './ProfessionModal';
 
-const limit = 6;
+const limit = 8;
 const token = window.localStorage.getItem("token");
 
 class ProfessionManage extends React.Component {
