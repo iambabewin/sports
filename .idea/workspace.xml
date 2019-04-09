@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db4ca168-5d91-4bce-93b0-7fbe850be33b" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/project/ProjectManage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/project/ProjectModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/year/YearManage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/year/YearModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/project.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/year.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/project.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/year.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HeadTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HeadTitle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/class/ClassManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/class/ClassManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/college/CollegeManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/college/CollegeManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profession/ProfessionManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profession/ProfessionManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/style.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/college.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/college.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/IndexPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/IndexPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Sidebar.js" afterDir="false" />
-    </list>
+    <list default="true" id="db4ca168-5d91-4bce-93b0-7fbe850be33b" name="默认的" comment="" />
     <ignored path="dvaquickstart.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,14 +67,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="YearManage.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="YearManage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/year/YearManage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
+            <state relative-caret-position="-66">
               <caret line="154" column="66" selection-start-line="154" selection-start-column="66" selection-end-line="154" selection-end-column="66" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -223,7 +211,6 @@
         <option value="$PROJECT_DIR$/src/components/profession/ProfessionModal.js" />
         <option value="$PROJECT_DIR$/src/components/class/ClassModal.js" />
         <option value="$PROJECT_DIR$/src/models/profession.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/routes/Sidebar.js" />
         <option value="$PROJECT_DIR$/src/components/HeadTitle.js" />
         <option value="$PROJECT_DIR$/src/components/class/ClassManage.js" />
@@ -240,6 +227,7 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/college/CollegeManage.js" />
         <option value="$PROJECT_DIR$/src/components/year/YearManage.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -260,7 +248,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="264" />
     <option name="y" value="66" />
     <option name="width" value="1378" />
@@ -457,7 +445,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102345000" />
+    <option name="totallyTimeSpent" value="102525000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -762,13 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/profession.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -972,11 +953,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/year/YearManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="-66">
           <caret line="154" column="66" selection-start-line="154" selection-start-column="66" selection-end-line="154" selection-end-column="66" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-end-line="7" />
         </state>
       </provider>
     </entry>
