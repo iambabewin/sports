@@ -4,7 +4,7 @@ import '../style.less';
 import {Table, Divider, Button, Popconfirm} from 'antd';
 import CollegeModal from './CollegeModal';
 
-const limit = 6;
+const limit = 8;
 const token = window.localStorage.getItem("token");
 
 class CollegeManage extends React.Component {

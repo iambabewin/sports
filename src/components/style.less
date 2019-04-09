@@ -1,4 +1,16 @@
 :global {
+  .header-title {
+    font-size: 16px;
+    line-height: 60px;
+    padding-left: 20px;
+    background: #fff;
+    margin: 15px 0 0 0;
+    box-shadow: 0 0px 1px #dddddd;
+  }
+
+  .editBtn {
+    color: #40a9ff;
+  }
   .editBtn:hover {
     color: #232741;
   }
@@ -11,20 +23,19 @@
 
   .addBtn {
     position: absolute;
-    right: 0;
+    right: 15px;
     top: -45px;
     font-size: 12px;
     color: #40a9ff;
-    background: #f0f2f5;
     border-color: #40a9ff;
   }
-  .addBtn:active{
+
+  .addBtn:active {
     color: #40a9ff;
-    background: #f0f2f5;
   }
-  .addBtn:focus{
+
+  .addBtn:focus {
     color: #40a9ff;
-    background: #f0f2f5;
   }
   .addBtn:hover {
     color: #fff;
@@ -44,11 +55,14 @@
   }
 
   /*Table*/
-  .manageTable{
+
+  .manageTable {
     background: #ffffff;
     padding: 15px;
-    .ant-table-tbody > tr > td{
-      padding: 13px 16px;
+    box-shadow: 0 1px 1px #dddddd;
+
+    .ant-table-thead > tr > th, .ant-table-tbody > tr > td{
+      padding: 10px 16px;
     }
   }
 }

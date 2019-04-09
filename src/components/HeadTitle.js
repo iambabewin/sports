@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './HeadTitle.css';
+import './style.less';
 
 class HeadTitle extends React.Component {
 
@@ -21,7 +21,7 @@ class HeadTitle extends React.Component {
     }
     return (
       <div>
-        <h2 className={styles['title']}>{NAMES[this.props.title]}</h2>
+        <h2 className="header-title">{NAMES[this.props.title]}</h2>
       </div>
     );
   }

@@ -4,7 +4,7 @@ import '../style.less';
 import {Table, Divider, Button, Popconfirm} from 'antd';
 import YearModal from './YearModal';
 
-const limit = 6;
+const limit = 8;
 const token = window.localStorage.getItem("token");
 
 class YearManage extends React.Component {
@@ -12,11 +12,12 @@ class YearManage extends React.Component {
     super(props);
     this.state = {
       loadingList: true,
+      associationVisible:false,
       editVisible: false,
       addVisible: false,
       current: 1,
       year_id: '',
-      year_name: '',
+      year_name: ''
     }
   }
 
@@ -52,6 +53,14 @@ class YearManage extends React.Component {
       }
     })
   };
+  //todo association project
+  showAssociationModal = (e, record) => {
+    this.setState({
+      associationVisible: true,
+      year_id: record.year_id,
+    });
+  };
+  
   showEditModal = (e, record) => {
     this.setState({
       editVisible: true,
@@ -105,6 +114,7 @@ class YearManage extends React.Component {
   };
   handleCancel = () => {
     this.setState({
+      associationVisible:false,
       editVisible: false,
       addVisible: false
     });
@@ -124,7 +134,9 @@ class YearManage extends React.Component {
       key: 'action',
       render: (text, record) => (
         <span>
-          <a className="editBtn" onClick={(e) => this.showEditModal(e, record)}>编辑</a>
+          <a className="editBtn" onClick={(e) => this.showAssociationModal(e, record)}>关联比赛项目</a>
+          <Divider type="vertical"/>
+          <a className="editBtn" style={{color:'#3390FF'}} onClick={(e) => this.showEditModal(e, record)}>编辑</a>
           <Divider type="vertical"/>
           <Popconfirm title="确定要删除这届吗?" onConfirm={() => this.delYear(record.year_id)}>
             <a className="deleteBtn">删除</a>

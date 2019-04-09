@@ -37,7 +37,9 @@ class IndexPage extends React.Component {
           collapsible
           collapsed={this.state.collapsed}>
           <div className={styles['systemTitle']}></div>
-          <Sidebar/>
+          <Sidebar
+            id={this.props.match.params.id}
+          />
         </Sider>
         <Layout>
           <Header className={styles['heads']}>

@@ -1,30 +1,27 @@
 import React from 'react';
-import { Menu, Icon, Switch } from 'antd';
-import { Router, Route ,Link} from 'dva/router';
+import {Menu, Icon, Switch} from 'antd';
+import {Router, Route, Link} from 'dva/router';
 
 const SubMenu = Menu.SubMenu;
+
 class Sidebar extends React.Component {
   state = {
     theme: 'dark',
-    current: '',
-    }
-  handleClick = (e) => {
-    this.setState({
-      current: e.key,
-    });
   }
+
   render() {
     return (
       <Menu
         theme={this.state.theme}
-        onClick={this.handleClick}
-        selectedKeys={[this.state.current]}
+        selectedKeys={[this.props.id]}
+        openKeys={['sportsEvent']}
         mode="inline"
       >
-        <Menu.Item key="collegeManage"><Link to="/collegeManage"><Icon type="home" /><span>院系管理</span></Link></Menu.Item>
-        <Menu.Item key="professionManage"><Link to="/professionManage"><Icon type="book" /><span>专业管理</span></Link></Menu.Item>
-        <Menu.Item key="classManage"><Link to="/classManage"><Icon type="team" /><span>班级管理</span></Link></Menu.Item>
-        <SubMenu key="sportsEvent" title={<span><Icon type="flag" /><span>运动会管理</span></span>}>
+        <Menu.Item key="collegeManage"><Link to="/collegeManage"><Icon type="home"/><span>院系管理</span></Link></Menu.Item>
+        <Menu.Item key="professionManage"><Link to="/professionManage"><Icon
+          type="book"/><span>专业管理</span></Link></Menu.Item>
+        <Menu.Item key="classManage"><Link to="/classManage"><Icon type="team"/><span>班级管理</span></Link></Menu.Item>
+        <SubMenu key="sportsEvent" title={<span><Icon type="flag"/><span>运动会管理</span></span>}>
           <Menu.Item key="year"><Link to="/year">历届管理</Link></Menu.Item>
           <Menu.Item key="project"><Link to="/project">比赛项目管理</Link></Menu.Item>
         </SubMenu>
