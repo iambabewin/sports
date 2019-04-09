@@ -168,6 +168,7 @@ class ProfessionManage extends React.Component {
       <div style={{position: 'relative'}}>
         <Button className="addBtn" onClick={this.showAddModal}>新增专业</Button>
         <Table
+          className="manageTable"
           rowKey={record => record.profession_id}
           columns={columns}
           dataSource={professionList.list}

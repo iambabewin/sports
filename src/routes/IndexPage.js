@@ -9,6 +9,8 @@ import {Popover, Button} from 'antd';
 import CollegeManage from '../components/college/CollegeManage';
 import ProfessionManage from '../components/profession/ProfessionManage';
 import ClassManage from '../components/class/ClassManage';
+import YearManage from '../components/year/YearManage';
+import ProjectManage from "../components/project/ProjectManage";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -65,6 +67,8 @@ class IndexPage extends React.Component {
             <Route path="/collegeManage" component={CollegeManage}/>
             <Route path="/professionManage" component={ProfessionManage}/>
             <Route path="/classManage" component={ClassManage}/>
+            <Route path="/year" component={YearManage}/>
+            <Route path="/project" component={ProjectManage}/>
           </Content>
           <Footer className={styles['footer']}>
             copyright ©2019 WIN All Rights Reserved
