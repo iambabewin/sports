@@ -1,5 +1,6 @@
 import * as project from '../services/project';
 import {message} from 'antd';
+import * as college from "../services/college";
 
 export default {
   namespace: 'project',
@@ -7,6 +8,7 @@ export default {
     projectList: {
       list: []
     },
+    allProjectList: []
   },
   effects: {
 
@@ -37,6 +39,23 @@ export default {
           yield put({
             type: 'save',
             payload: {projectList: data.data}
+          });
+          return data.ret;
+        } else {
+          message.error(data.msg);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
+    },
+
+    * GetAllProject({payload}, {call, put}) {
+      try {
+        const {data} = yield call(project.GetAllProject, payload);
+        if (data && data.ret === 0) {
+          yield put({
+            type: 'save',
+            payload: {allProjectList: data.data}
           });
           return data.ret;
         } else {

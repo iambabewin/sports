@@ -3,6 +3,7 @@ import {connect} from 'dva';
 import '../style.less';
 import {Table, Divider, Button, Popconfirm} from 'antd';
 import YearModal from './YearModal';
+import YearConnProjectModal from './YearConnProjectModal';
 
 const limit = 8;
 const token = window.localStorage.getItem("token");
@@ -12,12 +13,13 @@ class YearManage extends React.Component {
     super(props);
     this.state = {
       loadingList: true,
-      associationVisible:false,
+      connVisible: false,
       editVisible: false,
       addVisible: false,
       current: 1,
       year_id: '',
-      year_name: ''
+      year_name: '',
+      project_id: []
     }
   }
 
@@ -53,14 +55,34 @@ class YearManage extends React.Component {
       }
     })
   };
-  //todo association project
-  showAssociationModal = (e, record) => {
+  getConnYearProject = (id) => {
+    this.props.dispatch({
+      type: 'year/GetYearConnProject',
+      payload: {
+        token: token,
+        year_id: parseInt(id),
+      }
+    }).then((ret) => {
+      if (ret === 0) {
+        let arr = [];
+        this.props.yearConnProjectList.forEach(function (item) {
+          arr.push(parseInt(item.project_id))
+        });
+        this.setState({
+          project_id: arr,
+        })
+      }
+    })
+  };
+
+  showConnModal = (e, record) => {
     this.setState({
-      associationVisible: true,
+      connVisible: true,
       year_id: record.year_id,
     });
+    this.getConnYearProject(record.year_id);
   };
-  
+
   showEditModal = (e, record) => {
     this.setState({
       editVisible: true,
@@ -114,10 +136,24 @@ class YearManage extends React.Component {
   };
   handleCancel = () => {
     this.setState({
-      associationVisible:false,
+      connVisible: false,
       editVisible: false,
       addVisible: false
     });
+  };
+  connProject = () => {
+    this.props.dispatch({
+      type: 'year/ConnYearProject',
+      payload: {
+        token: token,
+        year_id: this.state.year_id,
+        project_id: this.state.project_id.toString()
+      }
+    }).then((ret) => {
+      if (ret === 0) {
+        this.getConnYearProject(this.state.year_id);
+      }
+    })
   };
 
   render() {
@@ -134,9 +170,9 @@ class YearManage extends React.Component {
       key: 'action',
       render: (text, record) => (
         <span>
-          <a className="editBtn" onClick={(e) => this.showAssociationModal(e, record)}>关联比赛项目</a>
+          <a className="editBtn" onClick={(e) => this.showConnModal(e, record)}>关联比赛项目</a>
           <Divider type="vertical"/>
-          <a className="editBtn" style={{color:'#3390FF'}} onClick={(e) => this.showEditModal(e, record)}>编辑</a>
+          <a className="editBtn" style={{color: '#3390FF'}} onClick={(e) => this.showEditModal(e, record)}>编辑</a>
           <Divider type="vertical"/>
           <Popconfirm title="确定要删除这届吗?" onConfirm={() => this.delYear(record.year_id)}>
             <a className="deleteBtn">删除</a>
@@ -189,6 +225,17 @@ class YearManage extends React.Component {
           handleOk={this.addYear}
           handleCancel={this.handleCancel}
         />
+
+        <YearConnProjectModal
+          visible={this.state.connVisible}
+          handleOk={this.connProject}
+          handleCancel={this.handleCancel}
+          project_id={this.state.project_id}
+          onSelectChange={(v) => {
+            this.setState({project_id: v});
+            console.log(v, 323)
+          }}
+        />
       </div>
     );
   }
@@ -196,7 +243,8 @@ class YearManage extends React.Component {
 
 export default connect((state) => {
   return {
-    yearList: state.year.yearList
+    yearList: state.year.yearList,
+    yearConnProjectList: state.year.yearConnProjectList
   }
 })(YearManage);
 

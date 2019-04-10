@@ -26,7 +26,6 @@ class ProfessionManage extends React.Component {
     this.getProfession()
   }
 
-  /**获取所有专业 */
   getProfession = (page) => {
     const location = (page - 1) * limit;
     this.props.dispatch({

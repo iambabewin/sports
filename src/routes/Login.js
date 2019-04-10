@@ -155,6 +155,7 @@ class Login extends React.Component {
             <Button type="primary" htmlType="submit" className="login-form-button">
               登 录
           </Button>
+            <a style={{userSelect: 'none'}}>运动员注册</a>
           </FormItem>
         </Form>
       </div>
