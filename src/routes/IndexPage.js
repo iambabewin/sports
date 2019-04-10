@@ -37,7 +37,9 @@ class IndexPage extends React.Component {
           collapsible
           collapsed={this.state.collapsed}>
           <div className={styles['systemTitle']}></div>
-          <Sidebar/>
+          <Sidebar
+            id={this.props.match.params.id}
+          />
         </Sider>
         <Layout>
           <Header className={styles['heads']}>
@@ -57,7 +59,7 @@ class IndexPage extends React.Component {
                 visible={this.state.visible}
                 onVisibleChange={this.handleVisibleChange}
               >
-                <Button style={{border: 'none'}}>Win</Button>
+                <Button style={{border: 'none'}}>张忠航</Button>
               </Popover>
             </div>
           </Header>
@@ -71,7 +73,7 @@ class IndexPage extends React.Component {
             <Route path="/project" component={ProjectManage}/>
           </Content>
           <Footer className={styles['footer']}>
-            copyright ©2019 WIN All Rights Reserved
+            copyright ©2019 ZhangZhonghang All Rights Reserved
           </Footer>
         </Layout>
       </Layout>
