@@ -42,6 +42,9 @@ class YearConnProjectModal extends React.Component {
                   value={this.props.project_id}
                   onChange={(value) => {
                     this.props.onSelectChange(value);
+                  }}
+                  onDeselect={(value) => {
+                    this.props.onDeselect(value);
                   }}>
             {
               this.props.allProjectList.map((project) => {

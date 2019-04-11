@@ -19,6 +19,7 @@ class YearManage extends React.Component {
       current: 1,
       year_id: '',
       year_name: '',
+      oldProject_id: [],
       project_id: []
     }
   }
@@ -70,6 +71,7 @@ class YearManage extends React.Component {
         });
         this.setState({
           project_id: arr,
+          oldProject_id: arr
         })
       }
     })
@@ -106,9 +108,7 @@ class YearManage extends React.Component {
       }
     }).then((ret) => {
       if (ret === 0) {
-        this.setState({
-          editVisible: false,
-        });
+        this.onClean();
         this.getYear();
       }
     })
@@ -122,23 +122,27 @@ class YearManage extends React.Component {
       }
     }).then((ret) => {
       if (ret === 0) {
+        this.onClean();
         this.getYear();
-        this.onClean()
       }
     })
   };
   onClean = () => {
     this.setState({
-      year_name: '',
+      editVisible: false,
       addVisible: false,
-      current: 1
+      connVisible: false,
+      year_name: '',
+      current: 1,
+      project_id: []
     })
   };
   handleCancel = () => {
     this.setState({
       connVisible: false,
       editVisible: false,
-      addVisible: false
+      addVisible: false,
+      project_id: []
     });
   };
   connProject = () => {
@@ -151,10 +155,25 @@ class YearManage extends React.Component {
       }
     }).then((ret) => {
       if (ret === 0) {
-        this.getConnYearProject(this.state.year_id);
+        this.onClean();
       }
     })
   };
+  cancelConnProject = (id) => {
+    if (this.state.oldProject_id.indexOf(id) !== -1) {
+      this.props.dispatch({
+        type: 'year/CancleConnYearProject',
+        payload: {
+          token: token,
+          year_id: this.state.year_id,
+          project_id: id
+        }
+      }).then((ret) => {
+        if (ret === 0) {
+        }
+      })
+    }
+  }
 
   render() {
     const columns = [{
@@ -233,8 +252,8 @@ class YearManage extends React.Component {
           project_id={this.state.project_id}
           onSelectChange={(v) => {
             this.setState({project_id: v});
-            console.log(v, 323)
           }}
+          onDeselect={(v) => this.cancelConnProject(v)}
         />
       </div>
     );

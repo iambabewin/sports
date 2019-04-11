@@ -83,6 +83,16 @@ export default {
         message.error(data.msg || '关联失败')
       }
     },
+
+    * CancleConnYearProject({payload}, {call, put}) {
+      const {data} = yield call(year.CancleConnYearProject, payload);
+      if (data && data.ret === 0) {
+        // message.success('删除成功');
+        return data.ret;
+      } else {
+        // message.error(data.msg || '删除失败')
+      }
+    },
   },
   reducers: {
     save(state, action) {

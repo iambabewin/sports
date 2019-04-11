@@ -18,6 +18,12 @@ export async function ConnYearProject(params) {
   });
 }
 
+export async function CancleConnYearProject(params) {
+  return request(`http://sports.handley.cn/year/project?token=${params.token}&year_id	=${params.year_id}&project_id=${params.project_id}`, {
+    method: 'DELETE',
+  });
+}
+
 export async function AddYear(params) {
   return request('http://sports.handley.cn/year', {
     method: 'POST',

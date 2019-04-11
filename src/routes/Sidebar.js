@@ -29,7 +29,7 @@ class Sidebar extends React.Component {
           <Menu.Item key="refereeInfo"><Link to="/refereeInfo">裁判信息</Link></Menu.Item>
           <Menu.Item key="managerInfo"><Link to="/managerInfo">体育部管理员信息</Link></Menu.Item>
         </SubMenu>
-        <Menu.Item key="gradeManage"><Link to="/gradeManage"><Icon type="book"/><span>成绩管理</span></Link></Menu.Item>
+        <Menu.Item key="gradeManage"><Link to="/gradeManage"><Icon type="line-chart" /><span>成绩管理</span></Link></Menu.Item>
         <Menu.Item key="registration"><Link to="/registration"><Icon type="form"/><span>在线报名</span></Link></Menu.Item>
         <Menu.Item key="infoStatistics"><Link to="/infoStatistics"><Icon
           type="pie-chart"/><span>信息统计</span></Link></Menu.Item>
