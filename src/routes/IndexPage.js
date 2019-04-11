@@ -71,6 +71,7 @@ class IndexPage extends React.Component {
             <Route path="/classManage" component={ClassManage}/>
             <Route path="/year" component={YearManage}/>
             <Route path="/project" component={ProjectManage}/>
+            <Route path="/register" component={ProjectManage}/>
           </Content>
           <Footer className={styles['footer']}>
             copyright ©2019 ZhangZhonghang All Rights Reserved

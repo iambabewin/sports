@@ -9,7 +9,7 @@ export default {
     setup({dispatch, history}) {
       if (window.location.pathname !== '/login') {
         const token = window.localStorage.getItem('token');
-        if(!token){
+        if (!token) {
           window.location = '/login';
         }
       }
@@ -38,6 +38,7 @@ export default {
         message.success(data.msg);
         window.localStorage.setItem('token', '');
         window.location = '/login';
+        console.log(window.localStorage.getItem('token'));
       } else {
         message.error(data.msg);
       }
