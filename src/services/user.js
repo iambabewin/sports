@@ -15,3 +15,13 @@ export async function logout(params) {
     method: 'DELETE',
   });
 }
+
+export async function register(params) {
+  return request('http://sports.handley.cn/register', {
+    method: 'POST',
+    body: JSON.stringify({...params}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+}

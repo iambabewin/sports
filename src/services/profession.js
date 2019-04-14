@@ -8,6 +8,10 @@ export async function GetAllProfession(params) {
   return request(`http://sports.handley.cn/profession/all?token=${params.token}`);
 }
 
+export async function GetProfessionByCollege(params) {
+  return request(`http://sports.handley.cn/profession/college?college_id=${params.college_id}`);
+}
+
 export async function AddProfession(params) {
   return request('http://sports.handley.cn/profession', {
     method: 'POST',

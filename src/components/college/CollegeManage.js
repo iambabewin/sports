@@ -137,16 +137,8 @@ class CollegeManage extends React.Component {
       total: collegeList.total,
       pageSize: limit,
       onChange: (page) => {
-        const location = (page - 1) * limit;
-        this.setState({current: page});
-        this.props.dispatch({
-          type: 'college/GetCollege',
-          payload: {
-            token: token,
-            location: location,
-            limit: limit,
-          }
-        })
+        this.setState({current: page, loadingList: true});
+        this.getCollege(page)
       },
     };
 
@@ -154,6 +146,7 @@ class CollegeManage extends React.Component {
       <div style={{position: 'relative'}}>
         <Button className="addBtn" onClick={this.showAddModal}>新增院系</Button>
         <Table
+          loading={this.state.loadingList}
           className="manageTable"
           rowKey={record => record.college_id}
           columns={columns}

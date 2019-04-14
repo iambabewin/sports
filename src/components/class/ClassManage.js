@@ -151,16 +151,8 @@ class ClassManage extends React.Component {
       total: classList.total,
       pageSize: limit,
       onChange: (page) => {
-        const location = (page - 1) * limit;
-        this.setState({current: page});
-        this.props.dispatch({
-          type: 'class/GetClass',
-          payload: {
-            token: token,
-            location: location,
-            limit: limit,
-          }
-        })
+        this.setState({current: page, loadingList: true});
+        this.getClass(page)
       },
     };
 
@@ -168,6 +160,7 @@ class ClassManage extends React.Component {
       <div style={{position: 'relative'}}>
         <Button className="addBtn" onClick={this.showAddModal}>新增班级</Button>
         <Table
+          loading={this.state.loadingList}
           className="manageTable"
           rowKey={record => record.class_id}
           columns={columns}

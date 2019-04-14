@@ -17,6 +17,8 @@ app.model(require('./models/profession').default);
 app.model(require('./models/class').default);
 app.model(require('./models/year').default);
 app.model(require('./models/project').default);
+app.model(require('./models/athletes').default);
+app.model(require('./models/judge').default);
 
 // 4. Router
 app.router(require('./router').default);

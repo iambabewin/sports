@@ -25,7 +25,7 @@ class Sidebar extends React.Component {
           <Menu.Item key="project"><Link to="/project">比赛项目管理</Link></Menu.Item>
         </SubMenu>
         <SubMenu key="personnelInfo" title={<span><Icon type="solution"/><span>人员信息管理</span></span>}>
-          <Menu.Item key="competitorInfo"><Link to="/competitorInfo">参赛人员信息</Link></Menu.Item>
+          <Menu.Item key="athletesInfo"><Link to="/athletesInfo">运动员信息</Link></Menu.Item>
           <Menu.Item key="refereeInfo"><Link to="/refereeInfo">裁判信息</Link></Menu.Item>
           <Menu.Item key="managerInfo"><Link to="/managerInfo">体育部管理员信息</Link></Menu.Item>
         </SubMenu>

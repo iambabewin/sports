@@ -204,16 +204,8 @@ class YearManage extends React.Component {
       total: yearList.total,
       pageSize: limit,
       onChange: (page) => {
-        const location = (page - 1) * limit;
-        this.setState({current: page});
-        this.props.dispatch({
-          type: 'year/GetYear',
-          payload: {
-            token: token,
-            location: location,
-            limit: limit,
-          }
-        })
+        this.setState({current: page, loadingList: true});
+        this.getYear(page);
       },
     };
 
@@ -221,6 +213,7 @@ class YearManage extends React.Component {
       <div style={{position: 'relative'}}>
         <Button className="addBtn" onClick={this.showAddModal}>新增届</Button>
         <Table
+          loading={this.state.loadingList}
           className="manageTable"
           rowKey={record => record.year_id}
           columns={columns}

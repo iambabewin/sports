@@ -7,7 +7,8 @@ export default {
     professionList: {
       list: []
     },
-    allProfessionList: []
+    allProfessionList: [],
+    collegeProfessionList: []
   },
   effects: {
 
@@ -65,6 +66,22 @@ export default {
       }
     },
 
+    * GetProfessionByCollege({payload}, {call, put}) {
+      try {
+        const {data} = yield call(profession.GetProfessionByCollege, payload);
+        if (data && data.ret === 0) {
+          yield put({
+            type: 'save',
+            payload: {collegeProfessionList: data.data}
+          });
+          return data.ret;
+        } else {
+          message.error(data.msg);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
+    },
 
     * EditProfession({payload}, {call, put}) {
       const {data} = yield call(profession.EditProfession, payload);

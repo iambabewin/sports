@@ -8,6 +8,10 @@ export async function GetYearConnProject(params) {
   return request(`http://sports.handley.cn/year/project?token=${params.token}&year_id=${params.year_id}`);
 }
 
+export async function GetAllYearConnProject(params) {
+  return request(`http://sports.handley.cn/year/project/all?token=${params.token}`);
+}
+
 export async function ConnYearProject(params) {
   return request('http://sports.handley.cn/year/project', {
     method: 'POST',

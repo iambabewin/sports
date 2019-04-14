@@ -4,8 +4,6 @@ import {Modal, Input, Select} from 'antd';
 import '../style.less'
 
 const Option = Select.Option;
-const token = window.localStorage.getItem("token");
-
 class ProfessionModal extends React.Component {
   constructor(props) {
     super(props);
@@ -14,10 +12,7 @@ class ProfessionModal extends React.Component {
 
   componentDidMount() {
     this.props.dispatch({
-      type: 'college/GetAllCollege',
-      payload: {
-        token: token
-      }
+      type: 'college/GetAllCollege'
     })
   }
 

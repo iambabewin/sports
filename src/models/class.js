@@ -7,6 +7,7 @@ export default {
     classList: {
       list: []
     },
+    professionClassList: []
   },
   effects: {
 
@@ -37,6 +38,23 @@ export default {
           yield put({
             type: 'save',
             payload: {classList: data.data}
+          });
+          return data.ret;
+        } else {
+          message.error(data.msg);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
+    },
+
+    * GetClassByProfession({payload}, {call, put}) {
+      try {
+        const {data} = yield call(classs.GetClassByProfession, payload);
+        if (data && data.ret === 0) {
+          yield put({
+            type: 'save',
+            payload: {professionClassList: data.data}
           });
           return data.ret;
         } else {

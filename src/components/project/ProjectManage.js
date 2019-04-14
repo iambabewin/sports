@@ -148,16 +148,8 @@ class ProjectManage extends React.Component {
       total: projectList.total,
       pageSize: limit,
       onChange: (page) => {
-        const location = (page - 1) * limit;
-        this.setState({current: page});
-        this.props.dispatch({
-          type: 'project/GetProject',
-          payload: {
-            token: token,
-            location: location,
-            limit: limit,
-          }
-        })
+        this.setState({current: page, loadingList: true});
+        this.getProject(page);
       },
     };
 
@@ -165,6 +157,7 @@ class ProjectManage extends React.Component {
       <div style={{position: 'relative'}}>
         <Button className="addBtn" onClick={this.showAddModal}>新增项目</Button>
         <Table
+          loading={this.state.loadingList}
           className="manageTable"
           rowKey={record => record.project_id}
           columns={columns}

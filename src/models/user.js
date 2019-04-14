@@ -44,6 +44,20 @@ export default {
       }
     },
 
+    * register({payload}, {call, put}) {
+      try {
+        const {data} = yield call(userServeices.register, payload);
+        if (data && data.ret === 0) {
+          message.success("注册成功");
+          window.location = '/login';
+        } else {
+          message.error("注册失败");
+        }
+      } catch (error) {
+        message.error(error);
+      }
+    }
+
   },
 
   reducers: {

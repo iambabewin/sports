@@ -5,7 +5,7 @@ export async function GetCollege(params) {
 }
 
 export async function GetAllCollege(params) {
-  return request(`http://sports.handley.cn/college/all?token=${params.token}`);
+  return request('http://sports.handley.cn/college/all');
 }
 
 export async function AddCollege(params) {
@@ -14,7 +14,7 @@ export async function AddCollege(params) {
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     },
-    body: JSON.stringify({ ...params }),
+    body: JSON.stringify({...params}),
   });
 }
 
@@ -30,6 +30,6 @@ export async function EditCollege(params) {
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     },
-    body: JSON.stringify({ ...params }),
+    body: JSON.stringify({...params}),
   });
 }

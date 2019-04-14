@@ -11,6 +11,8 @@ import ProfessionManage from '../components/profession/ProfessionManage';
 import ClassManage from '../components/class/ClassManage';
 import YearManage from '../components/year/YearManage';
 import ProjectManage from "../components/project/ProjectManage";
+import AthletesManage from "../components/athletes/AthletesManage";
+import JudgeManage from "../components/judge/JudgeManage";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -71,7 +73,9 @@ class IndexPage extends React.Component {
             <Route path="/classManage" component={ClassManage}/>
             <Route path="/year" component={YearManage}/>
             <Route path="/project" component={ProjectManage}/>
+            <Route path="/athletesInfo" component={AthletesManage}/>
             <Route path="/register" component={ProjectManage}/>
+            <Route path="/refereeInfo" component={JudgeManage}/>
           </Content>
           <Footer className={styles['footer']}>
             copyright ©2019 ZhangZhonghang All Rights Reserved

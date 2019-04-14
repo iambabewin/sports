@@ -4,6 +4,10 @@ export async function GetClass(params) {
   return request(`http://sports.handley.cn/class?token=${params.token}&location=${params.location}&limit=${params.limit}`);
 }
 
+export async function GetClassByProfession(params) {
+  return request(`http://sports.handley.cn/class/profession?profession_id=${params.profession_id}`);
+}
+
 export async function AddClass(params) {
   return request('http://sports.handley.cn/class', {
     method: 'POST',

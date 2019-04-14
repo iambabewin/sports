@@ -7,7 +7,8 @@ export default {
     yearList: {
       list: []
     },
-    yearConnProjectList: []
+    yearConnProjectList: [],
+    allYearConnProjectList: []
   },
   effects: {
     * AddYear({payload}, {call, put}) {
@@ -74,6 +75,23 @@ export default {
       }
     },
 
+    * GetAllYearConnProject({payload}, {call, put}) {
+      try {
+        const {data} = yield call(year.GetAllYearConnProject, payload);
+        if (data && data.ret === 0) {
+          yield put({
+            type: 'save',
+            payload: {allYearConnProjectList: data.data}
+          });
+          return data.ret;
+        } else {
+          message.error(data.msg);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
+    },
+
     * ConnYearProject({payload}, {call, put}) {
       const {data} = yield call(year.ConnYearProject, payload);
       if (data && data.ret === 0) {
@@ -88,7 +106,8 @@ export default {
       const {data} = yield call(year.CancleConnYearProject, payload);
       if (data && data.ret === 0) {
         return data.ret;
-      } else {}
+      } else {
+      }
     },
   },
   reducers: {
