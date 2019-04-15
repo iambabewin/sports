@@ -15,6 +15,7 @@ class Register extends React.Component {
       type: 'college/GetAllCollege'
     })
   }
+
   getProfessionByCollege = (college_id) => {
     this.props.dispatch({
       type: 'profession/GetProfessionByCollege',
@@ -74,7 +75,7 @@ class Register extends React.Component {
   }
 
   render() {
-    const {getFieldDecorator} = this.props.form;
+    const {getFieldDecorator, setFieldsValue} = this.props.form;
     return (
       <div className="register">
         <Form onSubmit={this.handleSubmit}>
@@ -118,6 +119,7 @@ class Register extends React.Component {
           <Form.Item label="院系">{getFieldDecorator('college_id', {
             rules: [{required: true, message: '请选择院系!'}],
           })(<Select onChange={(v) => {
+            setFieldsValue({profession_id: '', class_id: ''});
             this.getProfessionByCollege(v);
           }}>
             {
@@ -130,6 +132,7 @@ class Register extends React.Component {
           <Form.Item label="专业">{getFieldDecorator('profession_id', {
             rules: [{required: true, message: '请选择专业!'}],
           })(<Select onChange={(v) => {
+            setFieldsValue({class_id: ''});
             this.getClassByProfession(v);
           }}>
             {
