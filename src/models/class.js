@@ -1,5 +1,6 @@
 import * as classs from '../services/class';
 import {message} from 'antd';
+import * as profession from "../services/profession";
 
 export default {
   namespace: 'classs',
@@ -7,7 +8,8 @@ export default {
     classList: {
       list: []
     },
-    professionClassList: []
+    professionClassList: [],
+    allClassList: []
   },
   effects: {
 
@@ -38,6 +40,23 @@ export default {
           yield put({
             type: 'save',
             payload: {classList: data.data}
+          });
+          return data.ret;
+        } else {
+          message.error(data.msg);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
+    },
+
+    * GetAllClass({payload}, {call, put}) {
+      try {
+        const {data} = yield call(classs.GetAllClass, payload);
+        if (data && data.ret === 0) {
+          yield put({
+            type: 'save',
+            payload: {allClassList: data.data}
           });
           return data.ret;
         } else {

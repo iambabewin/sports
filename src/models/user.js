@@ -23,6 +23,8 @@ export default {
         if (data && data.ret === 0) {
           message.success("登录成功");
           window.localStorage.setItem('token', data.data.token);
+          window.localStorage.setItem('name', data.data.name);
+          window.localStorage.setItem('role', data.data.role_id);
           window.location = '/collegeManage';
         } else {
           message.error("登录失败");

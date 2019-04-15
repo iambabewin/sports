@@ -3,6 +3,7 @@ import {Menu, Icon, Switch} from 'antd';
 import {Router, Route, Link} from 'dva/router';
 
 const SubMenu = Menu.SubMenu;
+console.log(window.localStorage.getItem('role'));
 
 class Sidebar extends React.Component {
   state = {

@@ -15,7 +15,7 @@ export async function AddJudge(params) {
 }
 
 export async function DelJudge(params) {
-  return request(`http://sports.handley.cn/judge?token=${params.token}&user_id	=${params.user_id}`, {
+  return request(`http://sports.handley.cn/judge?token=${params.token}&judge_id	=${params.user_id}`, {
     method: 'DELETE',
   });
 }

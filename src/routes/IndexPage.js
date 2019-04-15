@@ -13,6 +13,7 @@ import YearManage from '../components/year/YearManage';
 import ProjectManage from "../components/project/ProjectManage";
 import AthletesManage from "../components/athletes/AthletesManage";
 import JudgeManage from "../components/judge/JudgeManage";
+import ManagerManage from "../components/manager/ManagerManage";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -32,6 +33,7 @@ class IndexPage extends React.Component {
 
   render() {
     const token = window.localStorage.getItem("token");
+    const name = window.localStorage.getItem("name");
     return (
       <Layout>
         <Sider
@@ -61,7 +63,7 @@ class IndexPage extends React.Component {
                 visible={this.state.visible}
                 onVisibleChange={this.handleVisibleChange}
               >
-                <Button style={{border: 'none'}}>张忠航</Button>
+                <Button style={{border: 'none'}}>{name}</Button>
               </Popover>
             </div>
           </Header>
@@ -76,6 +78,7 @@ class IndexPage extends React.Component {
             <Route path="/athletesInfo" component={AthletesManage}/>
             <Route path="/register" component={ProjectManage}/>
             <Route path="/refereeInfo" component={JudgeManage}/>
+            <Route path="/managerInfo" component={ManagerManage}/>
           </Content>
           <Footer className={styles['footer']}>
             copyright ©2019 ZhangZhonghang All Rights Reserved

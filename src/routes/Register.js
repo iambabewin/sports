@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'dva';
-import {Router, Route, Link} from 'dva/router';
 import {Form, Input, Button, Select} from 'antd';
 import './Login.less';
 

@@ -4,6 +4,7 @@ import {Modal, Input, Select} from 'antd';
 import '../style.less'
 
 const Option = Select.Option;
+const token = window.localStorage.getItem("token");
 
 class JudgeModal extends React.Component {
   constructor(props) {
@@ -13,7 +14,10 @@ class JudgeModal extends React.Component {
 
   componentDidMount() {
     this.props.dispatch({
-      type: 'year/GetAllYearConnProject'
+      type: 'year/GetAllYearConnProject',
+      payload: {
+        token: token,
+      }
     })
   }
 
@@ -21,7 +25,7 @@ class JudgeModal extends React.Component {
     return (
       <Modal
         className="modal"
-        width={500}
+        width={600}
         mask={true}
         title={this.props.title}
         visible={this.props.visible}
@@ -36,7 +40,7 @@ class JudgeModal extends React.Component {
         </div>
         <div className="input" style={{marginBottom: '20px'}}>
           <div className="title">登录密码</div>
-          <Input onChange={(e) => this.props.onPasswordChange(e.target.value)}/>
+          <Input value={this.props.password} onChange={(e) => this.props.onPasswordChange(e.target.value)}/>
         </div>
         <div className="input" style={{marginBottom: '20px'}}>
           <div className="title">姓名</div>
@@ -44,9 +48,10 @@ class JudgeModal extends React.Component {
         </div>
         <div className="input" style={{marginBottom: '20px'}}>
           <div className="title">性别</div>
-          <Select style={{width: '100%'}} value={parseInt(this.props.gender)} onChange={(value) => {
-            this.props.onGenderSelectChange(value);
-          }}>
+          <Select style={{width: '100%'}} value={this.props.gender}
+                  onChange={(value) => {
+                    this.props.onGenderSelectChange(value);
+                  }}>
             <Option value="1">男</Option>
             <Option value="2">女</Option>
           </Select>
@@ -65,7 +70,7 @@ class JudgeModal extends React.Component {
                   style={{width: '100%'}}
                   value={this.props.year_project_id}
                   onChange={(value) => {
-                    this.props.onSelectChange(value);
+                    this.props.onYearProjectSelectChange(value);
                   }}>
             {
               this.props.allYearConnProjectList.map((item) => {

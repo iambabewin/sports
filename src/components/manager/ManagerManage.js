@@ -2,13 +2,12 @@ import React from 'react';
 import {connect} from 'dva';
 import '../style.less';
 import {Table, Divider, Button, Popconfirm} from 'antd';
-import JudgeModal from './JudgeModal';
 import ManagerModal from "../manager/ManagerModal";
 
 const limit = 8;
 const token = window.localStorage.getItem("token");
 
-class JudgeManage extends React.Component {
+class ManagerManage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,18 +22,21 @@ class JudgeManage extends React.Component {
       gender: '',
       age: '',
       tel: '',
-      year_project_id: []
+      student_id: '',
+      college_id: '',
+      profession_id: '',
+      class_id: ''
     }
   }
 
   componentDidMount() {
-    this.getJudge()
+    this.getManager()
   }
 
-  getJudge = (page) => {
+  getManager = (page) => {
     const location = (page - 1) * limit;
     this.props.dispatch({
-      type: 'judge/GetJudge',
+      type: 'manager/GetManager',
       payload: {
         token: token,
         location: location,
@@ -47,16 +49,16 @@ class JudgeManage extends React.Component {
     })
   };
 
-  delJudge = (id) => {
+  delManager = (id) => {
     this.props.dispatch({
-      type: 'judge/DelJudge',
+      type: 'manager/DelManager',
       payload: {
         token: token,
         user_id: id,
       }
     }).then((ret) => {
       if (ret === 0) {
-        this.getJudge()
+        this.getManager()
       }
     })
   };
@@ -71,6 +73,10 @@ class JudgeManage extends React.Component {
       gender: record.gender,
       age: record.age,
       tel: record.tel,
+      student_id: record.student_id,
+      college_id: parseInt(record.college_id),
+      profession_id: parseInt(record.profession_id),
+      class_id: parseInt(record.class_id)
     });
   };
 
@@ -80,34 +86,37 @@ class JudgeManage extends React.Component {
     });
   };
 
-  editJudge = () => {
+  editManager = () => {
     this.props.dispatch({
-      type: 'judge/EditJudge',
+      type: 'manager/EditManager',
       payload: {
         token: token,
-        judge_id: this.state.user_id,
+        sports_id: this.state.user_id,
         account: this.state.account,
         password: this.state.password,
         name: this.state.name,
         gender: parseInt(this.state.gender),
         age: parseInt(this.state.age),
         tel: parseInt(this.state.tel),
-        year_project_id: this.state.year_project_id.toString()
+        student_id: parseInt(this.state.student_id),
+        college_id: this.state.college_id,
+        profession_id: this.state.profession_id,
+        class_id: this.state.class_id
       }
     }).then((ret) => {
       if (ret === 0) {
         this.setState({
           editVisible: false,
         });
-        this.getJudge();
+        this.getManager();
         this.onClean();
       }
     })
   };
 
-  addJudge = () => {
+  addManager = () => {
     this.props.dispatch({
-      type: 'judge/AddJudge',
+      type: 'manager/AddManager',
       payload: {
         token: token,
         account: this.state.account,
@@ -116,11 +125,14 @@ class JudgeManage extends React.Component {
         gender: parseInt(this.state.gender),
         age: parseInt(this.state.age),
         tel: parseInt(this.state.tel),
-        year_project_id: this.state.year_project_id.toString()
+        student_id: parseInt(this.state.student_id),
+        college_id: this.state.college_id,
+        profession_id: this.state.profession_id,
+        class_id: this.state.class_id
       }
     }).then((ret) => {
       if (ret === 0) {
-        this.getJudge();
+        this.getManager();
         this.onClean()
       }
     })
@@ -137,7 +149,10 @@ class JudgeManage extends React.Component {
       gender: '',
       age: '',
       tel: '',
-      year_project_id: []
+      student_id: '',
+      college_id: '',
+      profession_id: '',
+      class_id: ''
     })
   };
 
@@ -147,7 +162,7 @@ class JudgeManage extends React.Component {
 
   render() {
     const columns = [{
-      title: '裁判编号',
+      title: '管理员编号',
       dataIndex: 'user_id',
       key: 'user_id',
     }, {
@@ -172,50 +187,60 @@ class JudgeManage extends React.Component {
       dataIndex: 'tel',
       key: 'tel',
     }, {
-      title: '添加时间',
-      dataIndex: 'addtime',
-      key: 'addtime',
+      title: '学号',
+      dataIndex: 'student_id',
+      key: 'student_id',
     }, {
-      title: '操作',
+      title: '院系名称',
+      dataIndex: 'college_name',
+      key: 'college_name',
+    }, {
+      title: '专业名称',
+      dataIndex: 'profession_name',
+      key: 'profession_name',
+    }, {
+      title: '学号',
+      dataIndex: 'class_name',
+      key: 'class_name',
+    }, {
+      title: '班级',
       key: 'action',
       render: (text, record) => (
         <span>
           <a className="editBtn" onClick={(e) => this.showEditModal(e, record)}>编辑</a>
           <Divider type="vertical"/>
-          <Popconfirm title="确定要删除这个裁判吗?" onConfirm={() => this.delJudge(record.user_id)}>
+          <Popconfirm title="确定要删除这个管理员吗?" onConfirm={() => this.delManager(record.user_id)}>
             <a className="deleteBtn">删除</a>
           </Popconfirm>
         </span>
       ),
     }];
 
-    const {judgeList} = this.props;
-    console.log(judgeList);
+    const {managerList} = this.props;
     const pagination = {
-      total: judgeList.total,
+      total: managerList.total,
       pageSize: limit,
       onChange: (page) => {
         this.setState({current: page, loadingList: true});
-        this.getJudge(page);
+        this.getManager(page);
       },
     };
 
     return (
       <div style={{position: 'relative'}}>
-        <Button className="addBtn" onClick={this.showAddModal}>新增裁判</Button>
+        <Button className="addBtn" onClick={this.showAddModal}>新增管理员</Button>
         <Table
           loading={this.state.loadingList}
           className="manageTable"
           rowKey={record => record.user_id}
           columns={columns}
-          dataSource={judgeList.list}
+          dataSource={managerList.list}
           pagination={pagination}/>
 
-        {/*编辑裁判模态框*/}
-        <JudgeModal
-          title="编辑裁判信息"
+        <ManagerModal
+          title="编辑管理员信息"
           visible={this.state.editVisible}
-          handleOk={this.editJudge}
+          handleOk={this.editManager}
           handleCancel={this.handleCancel}
           account={this.state.account}
           onAccountChange={(v) => this.setState({account: v})}
@@ -229,15 +254,21 @@ class JudgeManage extends React.Component {
           onAgeChange={(v) => this.setState({age: v})}
           tel={this.state.tel}
           onTelChange={(v) => this.setState({tel: v})}
-          year_project_id={this.state.year_project_id}
-          onYearProjectSelectChange={(v) => this.setState({year_project_id: v})}
+          student_id={this.state.student_id}
+          onStudentidChange={(v) => this.setState({student_id: v})}
+          college_id={this.state.college_id}
+          onCollegeSelectChange={(v) => this.setState({college_id: v})}
+          profession_id={this.state.profession_id}
+          onProfessionSelectChange={(v) => this.setState({profession_id: v})}
+          class_id={this.state.class_id}
+          onClassSelectChange={(v) => this.setState({class_id: v})}
         />
 
-        {/*新增裁判模态框*/}
-        <JudgeModal
-          title="新增裁判"
+        {/*新增管理员模态框*/}
+        <ManagerModal
+          title="新增管理员"
           visible={this.state.addVisible}
-          handleOk={this.addJudge}
+          handleOk={this.addManager}
           handleCancel={this.handleCancel}
           account={this.state.account}
           onAccountChange={(v) => this.setState({account: v})}
@@ -251,8 +282,14 @@ class JudgeManage extends React.Component {
           onAgeChange={(v) => this.setState({age: v})}
           tel={this.state.tel}
           onTelChange={(v) => this.setState({tel: v})}
-          year_project_id={this.state.year_project_id}
-          onYearProjectSelectChange={(v) => this.setState({year_project_id: v})}
+          student_id={this.state.student_id}
+          onStudentidChange={(v) => this.setState({student_id: v})}
+          college_id={this.state.college_id}
+          onCollegeSelectChange={(v) => this.setState({college_id: v})}
+          profession_id={this.state.profession_id}
+          onProfessionSelectChange={(v) => this.setState({profession_id: v})}
+          class_id={this.state.class_id}
+          onClassSelectChange={(v) => this.setState({class_id: v})}
         />
       </div>
     );
@@ -261,6 +298,6 @@ class JudgeManage extends React.Component {
 
 export default connect((state) => {
   return {
-    judgeList: state.judge.judgeList,
+    managerList: state.manager.managerList,
   }
-})(JudgeManage);
+})(ManagerManage);
