@@ -35,6 +35,34 @@ class AthletesManage extends React.Component {
     })
   };
 
+  cancelAthletes = (id) => {
+    this.props.dispatch({
+      type: 'athletes/CancelAthletes',
+      payload: {
+        token: token,
+        user_id: id,
+      }
+    }).then((ret) => {
+      if (ret === 0) {
+        this.getAthletes()
+      }
+    })
+  };
+
+  passAthletes = (id) => {
+    this.props.dispatch({
+      type: 'athletes/PassAthletes',
+      payload: {
+        token: token,
+        user_id: id,
+      }
+    }).then((ret) => {
+      if (ret === 0) {
+        this.getAthletes()
+      }
+    })
+  };
+
   render() {
     const columns = [{
       title: '编号',
@@ -85,7 +113,13 @@ class AthletesManage extends React.Component {
       title: '操作',
       key: 'action',
       render: (text, record) => (
-        <span></span>
+        (record.is_pass == 1) ?
+          <Popconfirm title="确定要撤销这个运动员吗?" onConfirm={() => this.cancelAthletes(record.user_id)}>
+            <Button size="small" style={{fontSize: '12px'}}>撤销审核</Button>
+          </Popconfirm>
+          :
+          <Button type="primary" size="small" style={{fontSize: '12px'}}
+                  onClick={() => this.passAthletes(record.user_id)}>审核通过</Button>
       ),
     }];
     const {athletesList} = this.props;

@@ -3,7 +3,6 @@ import {connect} from 'dva';
 import '../style.less';
 import {Table, Divider, Button, Popconfirm} from 'antd';
 import JudgeModal from './JudgeModal';
-import ManagerModal from "../manager/ManagerModal";
 
 const limit = 8;
 const token = window.localStorage.getItem("token");
@@ -46,7 +45,6 @@ class JudgeManage extends React.Component {
       this.setState({loadingList: false})
     })
   };
-
   delJudge = (id) => {
     this.props.dispatch({
       type: 'judge/DelJudge',
@@ -60,7 +58,6 @@ class JudgeManage extends React.Component {
       }
     })
   };
-
   showEditModal = (e, record) => {
     this.setState({
       editVisible: true,
@@ -71,15 +68,14 @@ class JudgeManage extends React.Component {
       gender: record.gender,
       age: record.age,
       tel: record.tel,
+      year_project_id: record.year_project_id
     });
   };
-
   showAddModal = () => {
     this.setState({
       addVisible: true,
     });
   };
-
   editJudge = () => {
     this.props.dispatch({
       type: 'judge/EditJudge',
@@ -104,7 +100,6 @@ class JudgeManage extends React.Component {
       }
     })
   };
-
   addJudge = () => {
     this.props.dispatch({
       type: 'judge/AddJudge',
@@ -125,7 +120,6 @@ class JudgeManage extends React.Component {
       }
     })
   };
-
   onClean = () => {
     this.setState({
       editVisible: false,
@@ -140,7 +134,6 @@ class JudgeManage extends React.Component {
       year_project_id: []
     })
   };
-
   handleCancel = () => {
     this.onClean();
   };
@@ -190,7 +183,6 @@ class JudgeManage extends React.Component {
     }];
 
     const {judgeList} = this.props;
-    console.log(judgeList);
     const pagination = {
       total: judgeList.total,
       pageSize: limit,
@@ -230,7 +222,9 @@ class JudgeManage extends React.Component {
           tel={this.state.tel}
           onTelChange={(v) => this.setState({tel: v})}
           year_project_id={this.state.year_project_id}
-          onYearProjectSelectChange={(v) => this.setState({year_project_id: v})}
+          onYearProjectSelectChange={(v) => {
+            this.setState({year_project_id: v});
+          }}
         />
 
         {/*新增裁判模态框*/}

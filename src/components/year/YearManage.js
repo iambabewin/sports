@@ -58,7 +58,7 @@ class YearManage extends React.Component {
   };
   getConnYearProject = (id) => {
     this.props.dispatch({
-      type: 'year/GetYearConnProject',
+      type: 'year/GetCurrentYearConnProject',
       payload: {
         token: token,
         year_id: parseInt(id),
@@ -66,7 +66,7 @@ class YearManage extends React.Component {
     }).then((ret) => {
       if (ret === 0) {
         let arr = [];
-        this.props.yearConnProjectList.forEach(function (item) {
+        this.props.currentYearConnProjectList.forEach(function (item) {
           arr.push(parseInt(item.project_id))
         });
         this.setState({
@@ -76,7 +76,6 @@ class YearManage extends React.Component {
       }
     })
   };
-
   showConnModal = (e, record) => {
     this.setState({
       connVisible: true,
@@ -256,7 +255,7 @@ class YearManage extends React.Component {
 export default connect((state) => {
   return {
     yearList: state.year.yearList,
-    yearConnProjectList: state.year.yearConnProjectList
+    currentYearConnProjectList: state.year.currentYearConnProjectList
   }
 })(YearManage);
 

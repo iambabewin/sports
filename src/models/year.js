@@ -7,7 +7,7 @@ export default {
     yearList: {
       list: []
     },
-    yearConnProjectList: [],
+    currentYearConnProjectList: [],
     allYearConnProjectList: []
   },
   effects: {
@@ -58,13 +58,13 @@ export default {
       }
     },
 
-    * GetYearConnProject({payload}, {call, put}) {
+    * GetCurrentYearConnProject({payload}, {call, put}) {
       try {
-        const {data} = yield call(year.GetYearConnProject, payload);
+        const {data} = yield call(year.GetCurrentYearConnProject, payload);
         if (data && data.ret === 0) {
           yield put({
             type: 'save',
-            payload: {yearConnProjectList: data.data}
+            payload: {currentYearConnProjectList: data.data}
           });
           return data.ret;
         } else {
