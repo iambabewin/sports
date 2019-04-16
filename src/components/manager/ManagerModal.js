@@ -9,7 +9,9 @@ const token = window.localStorage.getItem("token");
 class JudgeModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {college_id: ''}
+    this.state = {
+      initialize: true
+    }
   }
 
   componentDidMount() {
@@ -32,7 +34,7 @@ class JudgeModal extends React.Component {
 
   //根据院系id获取对应专业
   getProfessionByCollege = (college_id) => {
-    this.setState({college_id: college_id});
+    this.setState({initialize: false});
     this.props.dispatch({
       type: 'profession/GetProfessionByCollege',
       payload: {
@@ -43,7 +45,7 @@ class JudgeModal extends React.Component {
 
   //根据专业id获取对应班级
   getClassByProfession = (profession_id) => {
-    this.setState({profession_id: profession_id});
+    this.setState({initialize: false});
     this.props.dispatch({
       type: 'classs/GetClassByProfession',
       payload: {
@@ -62,6 +64,9 @@ class JudgeModal extends React.Component {
         visible={this.props.visible}
         onOk={this.props.handleOk}
         onCancel={this.props.handleCancel}
+        afterClose={() => {
+          this.setState({initialize: true});
+        }}
         okText="确认"
         cancelText="取消"
       >
@@ -123,18 +128,17 @@ class JudgeModal extends React.Component {
                     this.props.onProfessionSelectChange(v);
                   }}>
             {
-              (this.props.collegeProfessionList.length !== 0 || this.state.college_id) ? (
-                this.props.collegeProfessionList.map((profession) => {
-                  console.log(profession);
-                  return <Option key={profession.profession_id}
-                                 value={profession.profession_id}>{profession.profession_name}</Option>
-                })
-              ) : (
+              this.state.initialize ? (
                 this.props.allProfessionList.map((profession) => {
                   return <Option key={profession.profession_id}
                                  value={profession.profession_id}>{profession.profession_name}</Option>
-                }))
+                })
 
+              ) : (
+                this.props.collegeProfessionList.map((profession) => {
+                  return <Option key={profession.profession_id}
+                                 value={profession.profession_id}>{profession.profession_name}</Option>
+                }))
             }
           </Select>
         </div>
@@ -146,13 +150,13 @@ class JudgeModal extends React.Component {
                     this.props.onClassSelectChange(v);
                   }}>
             {
-              (this.props.professionClassList.length !== 0 || this.state.profession_id) ? (
-                this.props.professionClassList.map((classs) => {
+              (this.state.initialize) ? (
+                this.props.allClassList.map((classs) => {
                   return <Option key={classs.class_id}
                                  value={classs.class_id}>{classs.class_name}</Option>
                 })
               ) : (
-                this.props.allClassList.map((classs) => {
+                this.props.professionClassList.map((classs) => {
                   return <Option key={classs.class_id}
                                  value={classs.class_id}>{classs.class_name}</Option>
                 }))

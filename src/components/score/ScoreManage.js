@@ -6,7 +6,7 @@ import {Table, Button, Popconfirm} from 'antd';
 const limit = 8;
 const token = window.localStorage.getItem("token");
 
-class AthletesSignUp extends React.Component {
+class ScoreManage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,13 +16,13 @@ class AthletesSignUp extends React.Component {
   }
 
   componentDidMount() {
-    this.getGames()
+    this.getJudgeManagedProject()
   }
 
-  getGames = (page) => {
+  getJudgeManagedProject = (page) => {
     const location = (page - 1) * limit;
     this.props.dispatch({
-      type: 'athletes/GetGames',
+      type: 'score/GetJudgeManagedProject',
       payload: {
         token: token,
         location: location,
@@ -32,20 +32,6 @@ class AthletesSignUp extends React.Component {
       this.setState({loadingList: false})
     }).catch(() => {
       this.setState({loadingList: false})
-    })
-  };
-
-  joinGames = (id) => {
-    this.props.dispatch({
-      type: 'athletes/JoinGames',
-      payload: {
-        token: token,
-        year_project_id: id,
-      }
-    }).then((ret) => {
-      if (ret === 0) {
-        this.getGames()
-      }
     })
   };
 
@@ -62,21 +48,16 @@ class AthletesSignUp extends React.Component {
       title: '操作',
       key: 'action',
       render: (text, record) => (
-        (record.is_join == 0) ?
-          <Popconfirm title="确定要报名这个项目吗?" onConfirm={() => this.joinGames(record.year_project_id)}>
-            <Button type="primary" size="small" style={{fontSize: '12px'}}>报名</Button>
-          </Popconfirm>
-          :
-          <span style={{fontSize: '12px', color: '#333333'}}>已报名</span>
+        <Button type="primary" size="small" style={{fontSize: '12px'}}>报名名单</Button>
       ),
     }];
-    const {gamesList} = this.props;
+    const {judgeManagedProjectList} = this.props;
     const pagination = {
-      total: gamesList.total,
+      total: judgeManagedProjectList.total,
       pageSize: limit,
       onChange: (page) => {
         this.setState({current: page});
-        this.getGames(page)
+        this.getJudgeManagedProject(page)
       },
     };
 
@@ -87,8 +68,9 @@ class AthletesSignUp extends React.Component {
           className="manageTable"
           rowKey={record => record.year_project_id}
           columns={columns}
-          dataSource={gamesList.list}
+          dataSource={judgeManagedProjectList.list}
           pagination={pagination}/>
+
       </div>
     );
   }
@@ -96,8 +78,8 @@ class AthletesSignUp extends React.Component {
 
 export default connect((state) => {
   return {
-    gamesList: state.athletes.gamesList
+    judgeManagedProjectList: state.score.judgeManagedProjectList
   }
-})(AthletesSignUp);
+})(ScoreManage);
 
 

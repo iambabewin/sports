@@ -14,6 +14,8 @@ import ProjectManage from "../components/project/ProjectManage";
 import AthletesManage from "../components/athletes/AthletesManage";
 import JudgeManage from "../components/judge/JudgeManage";
 import ManagerManage from "../components/manager/ManagerManage";
+import AthletesSignUp from "../components/athletes/AthletesSignUp";
+import ScoreManage from "../components/score/ScoreManage";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -79,6 +81,8 @@ class IndexPage extends React.Component {
             <Route path="/register" component={ProjectManage}/>
             <Route path="/refereeInfo" component={JudgeManage}/>
             <Route path="/managerInfo" component={ManagerManage}/>
+            <Route path="/registration" component={AthletesSignUp}/>
+            <Route path="/scoreInput" component={ScoreManage}/>
           </Content>
           <Footer className={styles['footer']}>
             copyright ©2019 ZhangZhonghang All Rights Reserved

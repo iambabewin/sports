@@ -19,3 +19,18 @@ export async function CancelAthletes(params) {
     method: 'DELETE',
   });
 }
+
+// 获取可报名的比赛项目
+export async function GetGames(params) {
+  return request(`http://sports.handley.cn/games?token=${params.token}&location=${params.location}&limit=${params.limit}`);
+}
+
+export async function JoinGames(params) {
+  return request('http://sports.handley.cn/athletes/join', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify({...params}),
+  });
+}

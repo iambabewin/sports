@@ -8,6 +8,9 @@ export default {
     athletesList: {
       list: []
     },
+    gamesList: {
+      list: []
+    }
   },
   effects: {
     * GetAthletes({payload}, {call, put}) {
@@ -44,6 +47,33 @@ export default {
         return data.ret;
       } else {
         message.error(data.msg || '撤销失败')
+      }
+    },
+
+    * GetGames({payload}, {call, put}) {
+      try {
+        const {data} = yield call(athletes.GetGames, payload);
+        if (data && data.ret === 0) {
+          yield put({
+            type: 'save',
+            payload: {gamesList: data.data}
+          });
+          return data.ret;
+        } else {
+          message.error(data.msg);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
+    },
+
+    * JoinGames({payload}, {call, put}) {
+      const {data} = yield call(athletes.JoinGames, payload);
+      if (data && data.ret === 0) {
+        message.success('报名成功');
+        return data.ret;
+      } else {
+        message.error(data.msg || '报名失败')
       }
     },
   },

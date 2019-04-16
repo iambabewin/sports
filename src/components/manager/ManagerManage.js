@@ -285,9 +285,9 @@ class ManagerManage extends React.Component {
           student_id={this.state.student_id}
           onStudentidChange={(v) => this.setState({student_id: v})}
           college_id={this.state.college_id}
-          onCollegeSelectChange={(v) => this.setState({college_id: v, profession_id: '', class_id: ''})}
+          onCollegeSelectChange={(v) => this.setState({college_id: v})}
           profession_id={this.state.profession_id}
-          onProfessionSelectChange={(v) => this.setState({profession_id: v, class_id: ''})}
+          onProfessionSelectChange={(v) => this.setState({profession_id: v})}
           class_id={this.state.class_id}
           onClassSelectChange={(v) => this.setState({class_id: v})}
         />

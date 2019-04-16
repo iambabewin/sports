@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'dva';
 import '../style.less';
-import {Table, Divider, Button, Popconfirm} from 'antd';
+import {Table, Button, Popconfirm} from 'antd';
 
 const limit = 8;
 const token = window.localStorage.getItem("token");
@@ -114,8 +114,8 @@ class AthletesManage extends React.Component {
       key: 'action',
       render: (text, record) => (
         (record.is_pass == 1) ?
-          <Popconfirm title="确定要撤销这个运动员吗?" onConfirm={() => this.cancelAthletes(record.user_id)}>
-            <Button size="small" style={{fontSize: '12px'}}>撤销审核</Button>
+          <Popconfirm title="确定撤销通过这个运动员吗?" onConfirm={() => this.cancelAthletes(record.user_id)}>
+            <Button size="small" style={{fontSize: '12px'}}>撤销通过</Button>
           </Popconfirm>
           :
           <Button type="primary" size="small" style={{fontSize: '12px'}}
@@ -127,7 +127,7 @@ class AthletesManage extends React.Component {
       total: athletesList.total,
       pageSize: limit,
       onChange: (page) => {
-        this.setState({current: page, getAthletes: true});
+        this.setState({current: page});
         this.getAthletes(page)
       },
     };
