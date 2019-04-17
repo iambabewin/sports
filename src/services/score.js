@@ -1,7 +1,7 @@
 import request from '../utils/request';
 
 /**
- * 成绩管理模块*/
+ * 成绩录入*/
 
 // 获取裁判管理的比赛项目
 export async function GetJudgeManagedProject(params) {
@@ -24,3 +24,14 @@ export async function InputScore(params) {
   });
 }
 
+/**
+ * 成绩查询*/
+// 获取运动员参加过的比赛
+export async function GetAthletesJoinProject(params) {
+  return request(`http://sports.handley.cn/join/project?token=${params.token}&location=${params.location}&limit=${params.limit}`);
+}
+
+// 根据比赛项目查询该项目下的运动员成绩
+export async function GetProjectAllScore(params) {
+  return request(`http://sports.handley.cn/grade?token=${params.token}&location=${params.location}&limit=${params.limit}&year_project_id=${params.year_project_id}`);
+}

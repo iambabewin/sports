@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'dva';
 import '../style.less';
-import {Table, Button, Popconfirm} from 'antd';
-import JoinListModal from "./JoinListModal";
+import {Table, Button} from 'antd';
+import ScoreListModal from "./ScoreListModal";
 
 const limit = 8;
 const token = window.localStorage.getItem("token");
 
-class ScoreManage extends React.Component {
+class ScoreQuery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,13 +19,13 @@ class ScoreManage extends React.Component {
   }
 
   componentDidMount() {
-    this.getJudgeManagedProject()
+    this.getAthletesJoinProject()
   }
 
-  getJudgeManagedProject = (page) => {
+  getAthletesJoinProject = (page) => {
     const location = (page - 1) * limit;
     this.props.dispatch({
-      type: 'score/GetJudgeManagedProject',
+      type: 'score/GetAthletesJoinProject',
       payload: {
         token: token,
         location: location,
@@ -37,9 +37,9 @@ class ScoreManage extends React.Component {
       this.setState({loadingList: false})
     })
   };
-  showJoinListModal = (e, record) => {
+  showScoreListModal = (e, record) => {
     this.props.dispatch({
-      type: 'score/GetProjectJoinAthletes',
+      type: 'score/GetProjectAllScore',
       payload: {
         token: token,
         location: 0,
@@ -72,17 +72,17 @@ class ScoreManage extends React.Component {
       key: 'action',
       render: (text, record) => (
         <Button type="primary" size="small" style={{fontSize: '12px'}}
-                onClick={(e) => this.showJoinListModal(e, record)}>报名名单</Button>
+                onClick={(e) => this.showScoreListModal(e, record)}>查看成绩</Button>
       ),
     }];
-    const {judgeManagedProjectList} = this.props;
-    const {projectJoinAthletesList} = this.props;
+    const {athletesJoinProjectList} = this.props;
+    const {projectAllScoreList} = this.props;
     const pagination = {
-      total: judgeManagedProjectList.total,
+      total: athletesJoinProjectList.total,
       pageSize: limit,
       onChange: (page) => {
         this.setState({current: page});
-        this.getJudgeManagedProject(page)
+        this.getAthletesJoinProject(page)
       },
     };
 
@@ -93,12 +93,12 @@ class ScoreManage extends React.Component {
           className="manageTable"
           rowKey={record => record.year_project_id}
           columns={columns}
-          dataSource={judgeManagedProjectList.list}
+          dataSource={athletesJoinProjectList.list}
           pagination={pagination}/>
-        <JoinListModal
+        <ScoreListModal
           visible={this.state.visible}
           handleCancel={this.handleCancel}
-          data={projectJoinAthletesList}
+          data={projectAllScoreList}
           year_project_id={this.state.year_project_id}
         />
       </div>
@@ -108,9 +108,9 @@ class ScoreManage extends React.Component {
 
 export default connect((state) => {
   return {
-    judgeManagedProjectList: state.score.judgeManagedProjectList,
-    projectJoinAthletesList: state.score.projectJoinAthletesList
+    athletesJoinProjectList: state.score.athletesJoinProjectList,
+    projectAllScoreList: state.score.projectAllScoreList
   }
-})(ScoreManage);
+})(ScoreQuery);
 
 

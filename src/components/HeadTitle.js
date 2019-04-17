@@ -14,7 +14,7 @@ class HeadTitle extends React.Component {
       refereeInfo: '裁判信息',
       managerInfo: '体育部管理员信息',
       scoreInput: '成绩录入',
-      scoreQuery: '成绩查询',
+      scoreQuery: '已报名项目',
       registration: '在线报名',
       infoStatistics: '信息统计'
     }

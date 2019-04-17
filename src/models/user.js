@@ -27,7 +27,7 @@ export default {
           window.localStorage.setItem('role', data.data.role_id);
           window.location = '/collegeManage';
         } else {
-          message.error("登录失败");
+          message.error(data.msg);
         }
       } catch (error) {
         message.error(error);

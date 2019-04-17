@@ -10,6 +10,12 @@ export default {
     },
     projectJoinAthletesList: {
       list: []
+    },
+    athletesJoinProjectList: {
+      list: []
+    },
+    projectAllScoreList: {
+      list: []
     }
   },
   effects: {
@@ -56,6 +62,45 @@ export default {
         message.error(data.msg || '录入失败')
       }
     },
+
+
+    /**
+     * 成绩查询*/
+
+    * GetAthletesJoinProject({payload}, {call, put}) {
+      try {
+        const {data} = yield call(score.GetAthletesJoinProject, payload);
+        if (data && data.ret === 0) {
+          yield put({
+            type: 'save',
+            payload: {athletesJoinProjectList: data.data}
+          });
+          return data.ret;
+        } else {
+          message.error(data.msg);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
+    },
+
+    * GetProjectAllScore({payload}, {call, put}) {
+      try {
+        const {data} = yield call(score.GetProjectAllScore, payload);
+        if (data && data.ret === 0) {
+          yield put({
+            type: 'save',
+            payload: {projectAllScoreList: data.data}
+          });
+          return data.ret;
+        } else {
+          message.error(data.msg);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
+    },
+
   },
   reducers: {
     save(state, action) {
