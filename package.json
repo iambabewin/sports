@@ -4,12 +4,15 @@
     "start": "roadhog server",
     "build": "roadhog build",
     "lint": "eslint --ext .js src test",
+
   },
   "dependencies": {
     "antd": "^3.1.4",
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.6.3",
     "dva": "^2.1.0",
+    "echarts": "^4.2.1",
+    "echarts-for-react": "^2.0.15-beta.0",
     "history": "^4.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

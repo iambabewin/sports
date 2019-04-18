@@ -21,6 +21,7 @@ app.model(require('./models/athletes').default);
 app.model(require('./models/judge').default);
 app.model(require('./models/manager').default);
 app.model(require('./models/score').default);
+app.model(require('./models/winners').default);
 
 // 4. Router
 app.router(require('./router').default);
