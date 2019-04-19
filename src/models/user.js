@@ -25,7 +25,7 @@ export default {
           window.localStorage.setItem('token', data.data.token);
           window.localStorage.setItem('name', data.data.name);
           window.localStorage.setItem('role', data.data.role_id);
-          if (data.data.rold_id == 1) {
+          if (data.data.role_id == 1) {
             window.location = '/collegeManage';
           } else if (data.data.role_id == 2) {
             window.location = '/professionManage';
