@@ -61,8 +61,15 @@ class IndexPage extends React.Component {
             <div style={{marginRight: '30px'}}>
               <Popover
                 placement="bottomRight"
-                content={<a
-                  onClick={() => this.props.dispatch({type: 'user/logout', payload: {token: token}})}>安全退出</a>}
+                content={
+                  <div>
+                    <Link to="/userinfo"><a style={{display: 'block', padding: '5px 0', color: '#666'}}><Icon
+                      type="user"/> 个人信息 </a></Link>
+                    <a style={{display: 'block', padding: '5px 0'}}
+                       onClick={() => this.props.dispatch({type: 'user/logout', payload: {token: token}})}><Icon
+                      type="export"/> 安全退出 </a>
+                  </div>
+                }
                 trigger="click"
                 visible={this.state.visible}
                 onVisibleChange={this.handleVisibleChange}
@@ -74,6 +81,7 @@ class IndexPage extends React.Component {
           <Content className={styles['content']}>
             <HeadTitle title={this.props.match.params.id}/>
             <div className={styles['bg']}></div>
+            {/*<Route path="/userinfo" component={UserInfo}/>*/}
             <Route path="/collegeManage" component={CollegeManage}/>
             <Route path="/professionManage" component={ProfessionManage}/>
             <Route path="/classManage" component={ClassManage}/>
