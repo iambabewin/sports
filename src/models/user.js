@@ -1,9 +1,12 @@
 import * as userServeices from '../services/user';
 import {message} from 'antd';
+import * as score from "../services/score";
 
 export default {
   namespace: 'user',
-  state: {},
+  state: {
+    userInfo: {}
+  },
 
   subscriptions: {
     setup({dispatch, history}) {
@@ -66,9 +69,24 @@ export default {
       } catch (error) {
         message.error(error);
       }
-    }
+    },
 
-
+    * GetUserInfo({payload}, {call, put}) {
+      try {
+        const {data} = yield call(userServeices.GetUserInfo, payload);
+        if (data && data.ret === 0) {
+          yield put({
+            type: 'save',
+            payload: {userInfo: data.data}
+          });
+          return data.ret;
+        } else {
+          message.error(data.msg);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
+    },
   },
 
   reducers: {

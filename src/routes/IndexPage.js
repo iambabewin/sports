@@ -18,6 +18,7 @@ import AthletesSignUp from "../components/athletes/AthletesSignUp";
 import ScoreManage from "../components/score/ScoreManage";
 import ScoreQuery from "../components/score/ScoreQuery";
 import Winners from "../components/Winners";
+import UserInfo from "../components/user/UserInfo";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -63,7 +64,7 @@ class IndexPage extends React.Component {
                 placement="bottomRight"
                 content={
                   <div>
-                    <Link to="/userinfo"><a style={{display: 'block', padding: '5px 0', color: '#666'}}><Icon
+                    <Link to="/userInfo"><a style={{display: 'block', padding: '5px 0', color: '#666'}}><Icon
                       type="user"/> 个人信息 </a></Link>
                     <a style={{display: 'block', padding: '5px 0'}}
                        onClick={() => this.props.dispatch({type: 'user/logout', payload: {token: token}})}><Icon
@@ -81,7 +82,7 @@ class IndexPage extends React.Component {
           <Content className={styles['content']}>
             <HeadTitle title={this.props.match.params.id}/>
             <div className={styles['bg']}></div>
-            {/*<Route path="/userinfo" component={UserInfo}/>*/}
+            <Route path="/userInfo" component={UserInfo}/>
             <Route path="/collegeManage" component={CollegeManage}/>
             <Route path="/professionManage" component={ProfessionManage}/>
             <Route path="/classManage" component={ClassManage}/>
