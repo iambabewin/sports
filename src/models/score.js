@@ -16,7 +16,10 @@ export default {
     },
     projectAllScoreList: {
       list: []
-    }
+    },
+    allYearConnProjectList: {
+      list: []
+    },
   },
   effects: {
     * GetJudgeManagedProject({payload}, {call, put}) {
@@ -91,6 +94,25 @@ export default {
           yield put({
             type: 'save',
             payload: {projectAllScoreList: data.data}
+          });
+          return data.ret;
+        } else {
+          message.error(data.msg);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
+    },
+
+    /**
+     * 成绩公布*/
+      * GetAllYearConnProject({payload}, {call, put}) {
+      try {
+        const {data} = yield call(score.GetAllYearConnProject, payload);
+        if (data && data.ret === 0) {
+          yield put({
+            type: 'save',
+            payload: {allYearConnProjectList: data.data}
           });
           return data.ret;
         } else {

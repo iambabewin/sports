@@ -3,6 +3,7 @@ import {Modal, Input, Select} from 'antd';
 import '../style.less'
 
 const Option = Select.Option;
+const { TextArea } = Input;
 
 class ProjectModal extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class ProjectModal extends React.Component {
   }
 
   render() {
-    const { type } = this.props;
+    const {type} = this.props;
     return (
       <Modal
         className="modal"
@@ -37,9 +38,9 @@ class ProjectModal extends React.Component {
       >
         <div className="input" style={{marginBottom: '20px'}}>
           <div className="title">项目名称</div>
-          <Input value={this.props.project_name} onChange={(e) => this.props.onChange(e.target.value)}/>
+          <Input value={this.props.project_name} onChange={(e) => this.props.onNameChange(e.target.value)}/>
         </div>
-        <div className="input">
+        <div className="input" style={{marginBottom: '20px'}}>
           <div className="title">项目类型</div>
           <Select style={{width: '100%'}}
                   value={type && parseInt(type)}
@@ -52,6 +53,10 @@ class ProjectModal extends React.Component {
               })
             }
           </Select>
+        </div>
+        <div className="input">
+          <div className="title">比赛规则</div>
+          <TextArea rows={5}  value={this.props.rule} onChange={(e) => this.props.onRuleChange(e.target.value)}/>
         </div>
       </Modal>
     )

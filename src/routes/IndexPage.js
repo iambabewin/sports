@@ -19,6 +19,7 @@ import ScoreManage from "../components/score/ScoreManage";
 import ScoreQuery from "../components/score/ScoreQuery";
 import Winners from "../components/Winners";
 import UserInfo from "../components/user/UserInfo";
+import ScoreAll from "../components/score/ScoreAll";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -95,6 +96,7 @@ class IndexPage extends React.Component {
             <Route path="/registration" component={AthletesSignUp}/>
             <Route path="/scoreInput" component={ScoreManage}/>
             <Route path="/scoreQuery" component={ScoreQuery}/>
+            <Route path="/scoreAll" component={ScoreAll}/>
             <Route path="/infoStatistics" component={Winners}/>
           </Content>
           <Footer className={styles['footer']}>

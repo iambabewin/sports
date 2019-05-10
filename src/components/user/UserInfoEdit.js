@@ -6,11 +6,13 @@ import {connect} from "dva";
 const {Option} = Select;
 
 class UserInfoEdit extends React.Component {
-
   componentDidMount() {
     this.props.dispatch({
       type: 'college/GetAllCollege'
-    })
+    });
+    const {userInfo} = this.props;
+    this.getProfessionByCollege(userInfo.college_id);
+    this.getClassByProfession(userInfo.profession_id);
   }
 
   getProfessionByCollege = (college_id) => {
@@ -32,7 +34,6 @@ class UserInfoEdit extends React.Component {
 
   render() {
     const {getFieldDecorator, setFieldsValue} = this.props.form;
-
     return (
       <Modal
         className="modal"
@@ -40,7 +41,7 @@ class UserInfoEdit extends React.Component {
         mask={true}
         title={this.props.title}
         visible={this.props.visible}
-        onOk={this.props.handleOk}
+        onOk={this.props.onCreate}
         onCancel={this.props.handleCancel}
         okText="确认"
         cancelText="取消"
@@ -53,9 +54,7 @@ class UserInfoEdit extends React.Component {
             })(<Input/>)}
           </Form.Item>
           <Form.Item label="密码">
-            {getFieldDecorator('password', {
-              rules: [{required: true, message: '请输入密码!',}],
-            })(<Input type="password"/>)}
+            {getFieldDecorator('password')(<Input type="password"/>)}
           </Form.Item>
           <Form.Item label="性别">
             {getFieldDecorator('gender', {
@@ -94,6 +93,7 @@ class UserInfoEdit extends React.Component {
           </Select>)}
           </Form.Item>
           <Form.Item label="专业">{getFieldDecorator('profession_id', {
+            initialValue: parseInt(this.props.userInfo.profession_id),
             rules: [{required: true, message: '请选择专业!'}],
           })(<Select onChange={(v) => {
             setFieldsValue({class_id: ''});
@@ -108,6 +108,7 @@ class UserInfoEdit extends React.Component {
           </Select>)}
           </Form.Item>
           <Form.Item label="班级">{getFieldDecorator('class_id', {
+            initialValue: parseInt(this.props.userInfo.class_id),
             rules: [{required: true, message: '请选择班级!'}],
           })(<Select>
             {

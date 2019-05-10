@@ -1,6 +1,7 @@
 import * as userServeices from '../services/user';
 import {message} from 'antd';
 import * as score from "../services/score";
+import * as judge from "../services/judge";
 
 export default {
   namespace: 'user',
@@ -85,6 +86,16 @@ export default {
         }
       } catch (error) {
         message.error(error.message);
+      }
+    },
+
+    * EditUserInfo({payload}, {call, put}) {
+      const {data} = yield call(userServeices.EditUserInfo, payload);
+      if (data && data.ret === 0) {
+        message.success('修改成功');
+        return data.ret;
+      } else {
+        message.error(data.msg || '修改失败')
       }
     },
   },

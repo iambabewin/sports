@@ -2,8 +2,8 @@ import React from 'react';
 import {connect} from 'dva';
 import '../style.less';
 import {Card, Button} from 'antd';
-import CollegeModal from "../college/CollegeModal";
 import UserInfoEdit from "./UserInfoEdit";
+import {Form} from "antd/lib/index";
 
 const token = window.localStorage.getItem("token");
 
@@ -27,6 +27,43 @@ class UserInfo extends React.Component {
       }
     })
   };
+  editUserInfo = (values) => {
+    this.props.dispatch({
+      type: 'user/EditUserInfo',
+      payload: {
+        token: token,
+        name: values.name,
+        password: values.password,
+        gender: values.gender,
+        age: values.age,
+        tel: values.tel,
+        college_id: values.college_id,
+        profession_id: values.profession_id,
+        class_id: values.class_id
+      }
+    }).then((ret) => {
+      if (ret === 0) {
+        this.getUserInfo();
+      }
+    })
+  };
+
+  handleCreate = () => {
+    const form = this.form;
+    form.validateFields((err, values) => {
+      if (err) {
+        return;
+      }
+      console.log('Received values of form: ', values);
+      this.editUserInfo(values);
+      form.resetFields();
+      this.setState({editVisible: false});
+    });
+  };
+  saveFormRef = (form) => {
+    this.form = form;
+  }
+
   showEditModal = () => {
     this.setState({
       editVisible: true,
@@ -37,8 +74,11 @@ class UserInfo extends React.Component {
       editVisible: false
     });
   };
+
   render() {
     const {userInfo} = this.props;
+    const WrappedUserInfoForm = Form.create()(UserInfoEdit);
+
     return (
       <div style={{position: 'relative'}}>
         <Button className="addBtn" onClick={this.showEditModal}>修改信息</Button>
@@ -55,14 +95,14 @@ class UserInfo extends React.Component {
           </div>
         </Card>
 
-
-        <UserInfoEdit
+        <WrappedUserInfoForm
           title="修改个人信息"
           userInfo={userInfo}
           visible={this.state.editVisible}
           handleCancel={this.handleCancel}
+          onCreate={this.handleCreate}
+          ref={this.saveFormRef}
         />
-
       </div>
     );
   }

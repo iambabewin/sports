@@ -18,6 +18,7 @@ class ProjectManage extends React.Component {
       project_id: '',
       project_name: '',
       type: '',
+      rule: ''
     }
   }
 
@@ -58,13 +59,15 @@ class ProjectManage extends React.Component {
       editVisible: true,
       project_name: record.project_name,
       project_id: record.project_id,
-      type: record.type
+      type: record.type,
+      rule: record.rule
     });
   };
   showAddModal = () => {
     this.setState({
       project_name: '',
       type: '',
+      rule: '',
       addVisible: true
     });
   };
@@ -75,7 +78,8 @@ class ProjectManage extends React.Component {
         token: token,
         project_id: this.state.project_id,
         project_name: this.state.project_name,
-        type: this.state.type
+        type: this.state.type,
+        rule: this.state.rule
       }
     }).then((ret) => {
       if (ret === 0) {
@@ -92,7 +96,8 @@ class ProjectManage extends React.Component {
       payload: {
         token: token,
         project_name: this.state.project_name,
-        type: this.state.type
+        type: this.state.type,
+        rule: this.state.rule
       }
     }).then((ret) => {
       if (ret === 0) {
@@ -105,6 +110,7 @@ class ProjectManage extends React.Component {
     this.setState({
       project_name: '',
       type: '',
+      rule: '',
       addVisible: false,
       current: 1
     })
@@ -125,6 +131,12 @@ class ProjectManage extends React.Component {
       title: '比赛项目名称',
       dataIndex: 'project_name',
       key: 'project_name',
+    }, {
+      title: '比赛项目规则',
+      dataIndex: 'rule',
+      key: 'rule',
+      width: '30%',
+      render: rule => (<span>{rule && rule.substring(0, 50)}</span>),
     }, {
       title: '比赛项目类型',
       dataIndex: 'type',
@@ -165,22 +177,26 @@ class ProjectManage extends React.Component {
           pagination={pagination}/>
 
         <ProjectModal
-          onChange={(v) => this.setState({project_name: v})}
+          onNameChange={(v) => this.setState({project_name: v})}
+          onRuleChange={(v) => this.setState({rule: v})}
           onSelectChange={(v) => this.setState({type: v})}
           title="编辑项目"
           project_name={this.state.project_name}
           type={this.state.type}
+          rule={this.state.rule}
           visible={this.state.editVisible}
           handleOk={this.editProject}
           handleCancel={this.handleCancel}
         />
 
         <ProjectModal
-          onChange={(v) => this.setState({project_name: v})}
+          onNameChange={(v) => this.setState({project_name: v})}
+          onRuleChange={(v) => this.setState({rule: v})}
           onSelectChange={(v) => this.setState({type: v})}
           title="新增项目"
-          type={this.state.type}
           project_name={this.state.project_name}
+          type={this.state.type}
+          rule={this.state.rule}
           visible={this.state.addVisible}
           handleOk={this.addProject}
           handleCancel={this.handleCancel}

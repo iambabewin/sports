@@ -29,3 +29,13 @@ export async function register(params) {
 export async function GetUserInfo(params) {
   return request(`http://sports.handley.cn/user/data?token=${params.token}`);
 }
+
+export async function EditUserInfo(params) {
+  return request('http://sports.handley.cn/user/data', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify({ ...params }),
+  });
+}

@@ -31,7 +31,14 @@ export async function GetAthletesJoinProject(params) {
   return request(`http://sports.handley.cn/join/project?token=${params.token}&location=${params.location}&limit=${params.limit}`);
 }
 
-// 根据比赛项目查询该项目下的运动员成绩
+// 根据比赛项目查询成绩
 export async function GetProjectAllScore(params) {
   return request(`http://sports.handley.cn/grade?token=${params.token}&location=${params.location}&limit=${params.limit}&year_project_id=${params.year_project_id}`);
+}
+
+/**
+ *成绩公布*/
+// 获取所有关联届比赛项目
+export async function GetAllYearConnProject(params) {
+  return request(`http://sports.handley.cn/year/project/page?token=${params.token}&location=${params.location}&limit=${params.limit}`);
 }
