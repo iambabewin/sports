@@ -17,7 +17,8 @@ class HeadTitle extends React.Component {
       scoreQuery: '已报名项目',
       registration: '在线报名',
       infoStatistics: '信息统计',
-      userInfo: '个人信息'
+      userInfo: '个人信息',
+      scoreAll: '成绩公布'
     }
     return (
       <div>

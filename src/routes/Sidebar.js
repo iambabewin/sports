@@ -4,7 +4,6 @@ import {Router, Route, Link} from 'dva/router';
 
 const SubMenu = Menu.SubMenu;
 const role = window.localStorage.getItem('role');
-console.log(role);
 
 class Sidebar extends React.Component {
   state = {
@@ -41,7 +40,8 @@ class Sidebar extends React.Component {
 
         <SubMenu key="gradeManage" title={<span><Icon type="line-chart"/><span>成绩管理</span></span>}>
           {(role == 1 || role == 3) && (<Menu.Item key="scoreInput"><Link to="/scoreInput">成绩录入</Link></Menu.Item>)}
-          <Menu.Item key="scoreQuery"><Link to="/scoreQuery">成绩查询</Link></Menu.Item>
+          {(role == 4) && (<Menu.Item key="scoreQuery"><Link to="/scoreQuery">我的成绩</Link></Menu.Item>)}
+          <Menu.Item key="scoreAll"><Link to="/scoreAll">成绩公布</Link></Menu.Item>
         </SubMenu>
         {role == 4 && (<Menu.Item key="registration"><Link to="/registration">
           <Icon type="form"/><span>在线报名</span></Link></Menu.Item>)}

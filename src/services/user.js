@@ -27,5 +27,5 @@ export async function register(params) {
 }
 
 export async function GetUserInfo(params) {
-  return request(`http://sports.handley.cn/user/data?token=${params.token}}`);
+  return request(`http://sports.handley.cn/user/data?token=${params.token}`);
 }

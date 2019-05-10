@@ -1,20 +1,18 @@
 import React from 'react';
-import {connect} from 'dva';
-import {Form, Input, Button, Select} from 'antd';
-import './Login.less';
+import {Modal, Input, Form, Select} from 'antd';
+import '../style.less'
+import {connect} from "dva";
 
 const {Option} = Select;
 
-class Register extends React.Component {
-  state = {
-    confirmDirty: false
-  };
+class UserInfoEdit extends React.Component {
 
   componentDidMount() {
     this.props.dispatch({
       type: 'college/GetAllCollege'
     })
   }
+
   getProfessionByCollege = (college_id) => {
     this.props.dispatch({
       type: 'profession/GetProfessionByCollege',
@@ -31,73 +29,39 @@ class Register extends React.Component {
       }
     })
   };
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        this.props.dispatch({
-          type: 'user/register',
-          payload: {
-            account: values.account,
-            password: values.password,
-            name: values.name,
-            gender: parseInt(values.gender),
-            age: parseInt(values.age),
-            tel: parseInt(values.tel),
-            student_id: parseInt(values.student_id),
-            college_id: values.college_id,
-            profession_id: values.profession_id,
-            class_id: values.class_id
-          }
-        })
-      }
-    });
-  };
-  handleConfirmBlur = (e) => {
-    const value = e.target.value;
-    this.setState({confirmDirty: this.state.confirmDirty || !!value});
-  };
-  compareToFirstPassword = (rule, value, callback) => {
-    const form = this.props.form;
-    if (value && value !== form.getFieldValue('password')) {
-      callback('两次密码输入不一致!');
-    } else {
-      callback();
-    }
-  }
-  validateToNextPassword = (rule, value, callback) => {
-    const form = this.props.form;
-    if (value && this.state.confirmDirty) {
-      form.validateFields(['confirm'], {force: true});
-    }
-    callback();
-  };
 
   render() {
     const {getFieldDecorator, setFieldsValue} = this.props.form;
+
     return (
-      <div className="register">
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Item label="登录账号">
-            {getFieldDecorator('account', {rules: [{required: true, message: '请输入用户名!',}],})(<Input/>)}
+      <Modal
+        className="modal"
+        width={750}
+        mask={true}
+        title={this.props.title}
+        visible={this.props.visible}
+        onOk={this.props.handleOk}
+        onCancel={this.props.handleCancel}
+        okText="确认"
+        cancelText="取消"
+      >
+        <Form className="userinfoEdit">
+          <Form.Item label="姓名">
+            {getFieldDecorator('name', {
+              initialValue: this.props.userInfo.name,
+              rules: [{required: true, message: '请输入姓名!',}],
+            })(<Input/>)}
           </Form.Item>
-          <Form.Item></Form.Item>
           <Form.Item label="密码">
             {getFieldDecorator('password', {
-              rules: [{required: true, message: '请输入密码!',}, {validator: this.validateToNextPassword,}],
+              rules: [{required: true, message: '请输入密码!',}],
             })(<Input type="password"/>)}
           </Form.Item>
-          <Form.Item label="确认密码">
-            {getFieldDecorator('confirm', {
-              rules: [{required: true, message: '请确认密码!',},
-                {validator: this.compareToFirstPassword,}],
-            })(<Input type="password" onBlur={this.handleConfirmBlur}/>)}
-          </Form.Item>
-          <Form.Item label="姓名">
-            {getFieldDecorator('name', {rules: [{required: true, message: '请输入姓名!',}],})(<Input/>)}
-          </Form.Item>
           <Form.Item label="性别">
-            {getFieldDecorator('gender', {rules: [{required: true, message: '请选择性别!',}],})(
+            {getFieldDecorator('gender', {
+              initialValue: this.props.userInfo.gender,
+              rules: [{required: true, message: '请选择性别!',}],
+            })(
               <Select>
                 <Option value="1">男</Option>
                 <Option value="2">女</Option>
@@ -105,17 +69,18 @@ class Register extends React.Component {
             )}
           </Form.Item>
           <Form.Item label="年龄">
-            {getFieldDecorator('age', {rules: [{required: true, message: '请输入年龄!',}],})(<Input/>)}
+            {getFieldDecorator('age', {
+              initialValue: this.props.userInfo.age,
+              rules: [{required: true, message: '请输入年龄!',}],
+            })(<Input/>)}
           </Form.Item>
           <Form.Item label="电话">{getFieldDecorator('tel', {
+            initialValue: this.props.userInfo.tel,
             rules: [{required: true, message: '请输入电话!'}],
           })(<Input/>)}
           </Form.Item>
-          <Form.Item label="学号">{getFieldDecorator('student_id', {
-            rules: [{required: true, message: '请输入学号!'}],
-          })(<Input/>)}
-          </Form.Item>
           <Form.Item label="院系">{getFieldDecorator('college_id', {
+            initialValue: parseInt(this.props.userInfo.college_id),
             rules: [{required: true, message: '请选择院系!'}],
           })(<Select onChange={(v) => {
             setFieldsValue({profession_id: '', class_id: ''});
@@ -153,21 +118,17 @@ class Register extends React.Component {
             }
           </Select>)}
           </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">注册</Button>
-          </Form.Item>
-          <Form.Item></Form.Item>
         </Form>
-      </div>
-    );
+      </Modal>
+    )
   }
 }
 
-const WrappedRegistrationForm = Form.create()(Register);
+const WrappedUserInfoForm = Form.create()(UserInfoEdit);
 export default connect((state) => {
   return {
     allCollegeList: state.college.allCollegeList,
     collegeProfessionList: state.profession.collegeProfessionList,
     professionClassList: state.classs.professionClassList
   }
-})(WrappedRegistrationForm);
+})(WrappedUserInfoForm);

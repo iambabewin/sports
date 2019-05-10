@@ -64,8 +64,8 @@ class IndexPage extends React.Component {
                 placement="bottomRight"
                 content={
                   <div>
-                    <Link to="/userInfo"><a style={{display: 'block', padding: '5px 0', color: '#666'}}><Icon
-                      type="user"/> 个人信息 </a></Link>
+                    <Link to="/userInfo"><span style={{display: 'block', padding: '5px 0', color: '#666'}}><Icon
+                      type="user"/> 个人信息 </span></Link>
                     <a style={{display: 'block', padding: '5px 0'}}
                        onClick={() => this.props.dispatch({type: 'user/logout', payload: {token: token}})}><Icon
                       type="export"/> 安全退出 </a>
