@@ -54,7 +54,6 @@ class UserInfo extends React.Component {
       if (err) {
         return;
       }
-      console.log('Received values of form: ', values);
       this.editUserInfo(values);
       form.resetFields();
       this.setState({editVisible: false});

@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db4ca168-5d91-4bce-93b0-7fbe850be33b" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/score/ScoreAll.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/project/ProjectManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/project/ProjectManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/project/ProjectModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/project/ProjectModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/user/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/UserInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/user/UserInfoEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/UserInfoEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/score.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/score.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/IndexPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/IndexPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/score.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/score.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Sidebar.js" afterDir="false" />
     </list>
     <ignored path="dvaquickstart.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,18 +27,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HeadTitle.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/HeadTitle.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="16" column="16" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ScoreQuery.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/score/ScoreQuery.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -62,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/src/routes/IndexPage.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="257">
-              <caret line="101" column="47" lean-forward="true" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
+              <caret line="101" column="47" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -86,7 +67,19 @@
         <entry file="file://$PROJECT_DIR$/src/services/project.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="23">
-              <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Sidebar.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/routes/Sidebar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectManage.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProjectManage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/project/ProjectManage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="851">
-              <caret line="70" column="22" lean-forward="true" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
+            <state relative-caret-position="106">
+              <caret line="138" column="66" selection-start-line="138" selection-start-column="66" selection-end-line="138" selection-end-column="66" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -116,7 +109,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/project/ProjectModal.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1219">
-              <caret line="55" column="14" lean-forward="true" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+              <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -159,7 +152,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>validate</find>
       <find>安全</find>
       <find>Link</find>
       <find>成绩查询</find>
@@ -189,6 +181,7 @@
       <find>AddProject</find>
       <find>onNameChange</find>
       <find>athletesJoinProjectList</find>
+      <find>console.log</find>
     </findStrings>
     <replaceStrings>
       <replace>CollegeManage</replace>
@@ -216,7 +209,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/models/year.js" />
         <option value="$PROJECT_DIR$/src/services/year.js" />
         <option value="$PROJECT_DIR$/src/components/profession/ProfessionManage.js" />
         <option value="$PROJECT_DIR$/src/models/judge.js" />
@@ -254,7 +246,6 @@
         <option value="$PROJECT_DIR$/src/routes/Register.js" />
         <option value="$PROJECT_DIR$/src/components/style.less" />
         <option value="$PROJECT_DIR$/src/components/HeadTitle.js" />
-        <option value="$PROJECT_DIR$/src/routes/Sidebar.js" />
         <option value="$PROJECT_DIR$/src/services/user.js" />
         <option value="$PROJECT_DIR$/src/models/user.js" />
         <option value="$PROJECT_DIR$/src/components/class/ClassManage.js" />
@@ -267,6 +258,8 @@
         <option value="$PROJECT_DIR$/src/components/score/ScoreAll.js" />
         <option value="$PROJECT_DIR$/src/components/project/ProjectModal.js" />
         <option value="$PROJECT_DIR$/src/components/project/ProjectManage.js" />
+        <option value="$PROJECT_DIR$/src/services/project.js" />
+        <option value="$PROJECT_DIR$/src/routes/Sidebar.js" />
       </list>
     </option>
   </component>
@@ -291,10 +284,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="409" />
-    <option name="y" value="41" />
+    <option name="x" value="405" />
+    <option name="y" value="269" />
     <option name="width" value="852" />
-    <option name="height" value="726" />
+    <option name="height" value="477" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -314,45 +307,7 @@
             <path>
               <item name="dvaquickstart" type="b2602c69:ProjectViewProjectNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dvaquickstart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dvaquickstart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dvaquickstart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="athletes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dvaquickstart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dvaquickstart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="score" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dvaquickstart" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -365,7 +320,7 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="echart&#9;ACTION&#9;null&#10;user&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/models/user.js&#10;modal&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/components/manager/ManagerModal.js&#10;manage&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/components/manager/ManagerManage.js&#10;pa&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/package.json&#10;YEA&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/models/year.js&#10;re&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/routes/Register.js&#10;head&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/components/HeadTitle.js&#10;hea&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/components/HeadTitle.css&#10;pack&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/package.json&#10;login&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/routes/Login.js&#10;pac&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/package.json&#10;request&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/utils/request.js&#10;app&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/utils/app.js&#10;app.&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/utils/app.js" />
+    <property name="SearchEverywhereHistoryKey" value="sidebar&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/routes/Sidebar.js&#10;echart&#9;ACTION&#9;null&#10;user&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/models/user.js&#10;modal&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/components/manager/ManagerModal.js&#10;manage&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/components/manager/ManagerManage.js&#10;pa&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/package.json&#10;YEA&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/models/year.js&#10;re&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/routes/Register.js&#10;head&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/components/HeadTitle.js&#10;hea&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/components/HeadTitle.css&#10;pack&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/package.json&#10;login&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/routes/Login.js&#10;pac&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/package.json&#10;request&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/utils/request.js&#10;app&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/utils/app.js&#10;app.&#9;FILE&#9;file://H:/phpStudy/WWW/myevn/test/src/utils/app.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="editor.config.accepted" value="true" />
@@ -475,12 +430,12 @@
       <workItem from="1555592194784" duration="12260000" />
       <workItem from="1557317601067" duration="2172000" />
       <workItem from="1557470959869" duration="9065000" />
-      <workItem from="1557496377169" duration="5559000" />
+      <workItem from="1557496377169" duration="6898000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228045000" />
+    <option name="totallyTimeSpent" value="229384000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -496,11 +451,11 @@
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="1" />
       <window_info anchor="bottom" id="Run" order="9" weight="0.13694267" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.3289689" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="4" visible="true" weight="0.10509554" />
       <window_info id="Capture Tool" order="2" />
       <window_info anchor="bottom" id="TypeScript" order="15" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="7" sideWeight="0.72337043" visible="true" weight="0.17203514" />
+      <window_info content_ui="combo" id="Project" order="7" sideWeight="0.72337043" visible="true" weight="0.17203514" />
       <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="bottom" id="Find" order="8" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
@@ -734,16 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/Sidebar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="773">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/Register.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -910,17 +855,10 @@
     <entry file="file://$PROJECT_DIR$/src/routes/IndexPage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
-          <caret line="101" column="47" lean-forward="true" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
+          <caret line="101" column="47" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -934,6 +872,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/project/ProjectModal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1219">
+          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/project/ProjectManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="138" column="66" selection-start-line="138" selection-start-column="66" selection-end-line="138" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/project.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -941,17 +896,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/project/ProjectModal.js">
+    <entry file="file://$PROJECT_DIR$/src/services/project.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1219">
-          <caret line="55" column="14" lean-forward="true" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+        <state relative-caret-position="23">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/project/ProjectManage.js">
+    <entry file="file://$PROJECT_DIR$/src/routes/Sidebar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="851">
-          <caret line="70" column="22" lean-forward="true" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
+        <state relative-caret-position="155">
+          <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

@@ -33,7 +33,7 @@ class Sidebar extends React.Component {
         )}
         {role != 4 && (<SubMenu key="personnelInfo" title={<span><Icon type="solution"/><span>人员信息管理</span></span>}>
             <Menu.Item key="athletesInfo"><Link to="/athletesInfo">运动员信息</Link></Menu.Item>
-            {role == 1 && (<Menu.Item key="refereeInfo"><Link to="/refereeInfo">裁判信息</Link></Menu.Item>)}
+            {(role == 1 || role == 2) && (<Menu.Item key="refereeInfo"><Link to="/refereeInfo">裁判信息</Link></Menu.Item>)}
             {role == 1 && (<Menu.Item key="managerInfo"><Link to="/managerInfo">体育部管理员信息</Link></Menu.Item>)}
           </SubMenu>
         )}
@@ -45,7 +45,8 @@ class Sidebar extends React.Component {
         </SubMenu>
         {role == 4 && (<Menu.Item key="registration"><Link to="/registration">
           <Icon type="form"/><span>在线报名</span></Link></Menu.Item>)}
-        <Menu.Item key="infoStatistics"><Link to="/infoStatistics"><Icon type="pie-chart"/><span>信息统计</span></Link></Menu.Item>
+        <Menu.Item key="infoStatistics"><Link to="/infoStatistics"><Icon
+          type="pie-chart"/><span>信息统计</span></Link></Menu.Item>
       </Menu>
     );
   }

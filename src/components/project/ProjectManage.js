@@ -136,7 +136,7 @@ class ProjectManage extends React.Component {
       dataIndex: 'rule',
       key: 'rule',
       width: '30%',
-      render: rule => (<span>{rule && rule.substring(0, 50)}</span>),
+      render: rule => (<span>{rule && rule.substring(0, 50) + '...'}</span>),
     }, {
       title: '比赛项目类型',
       dataIndex: 'type',
