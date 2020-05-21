@@ -1,5 +1,5 @@
 import * as manager from '../services/manager';
-import {message} from 'antd';
+import {message} from 'antd/lib';
 
 export default {
   namespace: 'manager',

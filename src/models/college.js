@@ -1,5 +1,5 @@
 import * as college from '../services/college';
-import {message} from 'antd';
+import {message} from 'antd/lib';
 
 export default {
   namespace: 'college',

@@ -1,5 +1,5 @@
 import * as project from '../services/project';
-import {message} from 'antd';
+import {message} from 'antd/lib';
 import * as college from "../services/college";
 
 export default {

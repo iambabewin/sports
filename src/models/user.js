@@ -1,5 +1,5 @@
 import * as userServeices from '../services/user';
-import {message} from 'antd';
+import {message} from 'antd/lib';
 import * as score from "../services/score";
 import * as judge from "../services/judge";
 

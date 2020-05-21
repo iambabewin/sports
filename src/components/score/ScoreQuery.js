@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'dva';
 import '../style.less';
-import {Table, Button} from 'antd';
+import {Table, Button} from 'antd/lib';
 import ScoreListModal from "./ScoreListModal";
 
 const limit = 8;

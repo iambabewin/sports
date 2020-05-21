@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'dva';
 import '../style.less';
-import {Table, Divider, Button, Popconfirm} from 'antd';
+import {Table, Divider, Button, Popconfirm} from 'antd/lib';
 import CollegeModal from './CollegeModal';
 
 const limit = 8;

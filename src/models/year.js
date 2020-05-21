@@ -1,5 +1,5 @@
 import * as year from '../services/year';
-import {message} from 'antd';
+import {message} from 'antd/lib';
 
 export default {
   namespace: 'year',

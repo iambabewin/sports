@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'dva';
 import '../style.less';
-import {Card, Button} from 'antd';
+import {Card, Button} from 'antd/lib';
 import UserInfoEdit from "./UserInfoEdit";
 import {Form} from "antd/lib/index";
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, Input, Form, Select} from 'antd';
+import {Modal, Input, Form, Select} from 'antd/lib';
 import '../style.less'
 import {connect} from "dva";
 

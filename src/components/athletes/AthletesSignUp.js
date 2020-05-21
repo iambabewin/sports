@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'dva';
 import '../style.less';
-import {Table, Button, Popconfirm} from 'antd';
+import {Table, Button, Popconfirm} from 'antd/lib';
 
 const limit = 8;
 const token = window.localStorage.getItem("token");

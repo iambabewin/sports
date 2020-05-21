@@ -1,6 +1,6 @@
 import React from 'react';
-import {Menu, Icon, Switch} from 'antd';
-import {Router, Route, Link} from 'dva/router';
+import {Menu, Icon} from 'antd/lib';
+import {Link} from 'dva/router';
 
 const SubMenu = Menu.SubMenu;
 const role = window.localStorage.getItem('role');
@@ -17,13 +17,13 @@ class Sidebar extends React.Component {
         selectedKeys={[this.props.id]}
         mode="inline"
       >
-        {role == 1 && (<Menu.Item key="collegeManage"><Link to="/collegeManage">
+        {role === 1 && (<Menu.Item key="collegeManage"><Link to="/collegeManage">
             <Icon type="home"/><span>院系管理</span></Link></Menu.Item>
         )}
-        {(role == 1 || role == 2) && (<Menu.Item key="professionManage"><Link to="/professionManage">
+        {(role === 1 || role === 2) && (<Menu.Item key="professionManage"><Link to="/professionManage">
             <Icon type="book"/><span>专业管理</span></Link></Menu.Item>
         )}
-        {(role == 1 || role == 2) && (<Menu.Item key="classManage"><Link to="/classManage">
+        {(role === 1 || role == 2) && (<Menu.Item key="classManage"><Link to="/classManage">
             <Icon type="team"/><span>班级管理</span></Link></Menu.Item>
         )}
         {role == 1 && (<SubMenu key="sportsEvent" title={<span><Icon type="flag"/><span>运动会管理</span></span>}>

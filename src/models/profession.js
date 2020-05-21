@@ -1,5 +1,5 @@
 import * as profession from '../services/profession';
-import {message} from 'antd';
+import {message} from 'antd/lib';
 
 export default {
   namespace: 'profession',

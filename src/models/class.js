@@ -1,5 +1,5 @@
 import * as classs from '../services/class';
-import {message} from 'antd';
+import {message} from 'antd/lib';
 import * as profession from "../services/profession";
 
 export default {

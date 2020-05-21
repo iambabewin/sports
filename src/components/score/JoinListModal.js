@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, Table, Button, Input} from 'antd';
+import {Modal, Table, Button, Input} from 'antd/lib';
 import '../style.less'
 import {connect} from "dva";
 

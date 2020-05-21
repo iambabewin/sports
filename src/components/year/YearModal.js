@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, Input} from 'antd';
+import {Modal, Input} from 'antd/lib';
 import '../style.less'
 
 class YearModal extends React.Component {

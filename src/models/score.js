@@ -1,5 +1,5 @@
 import * as score from '../services/score';
-import {message} from 'antd';
+import {message} from 'antd/lib';
 import * as athletes from "../services/athletes";
 
 export default {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'dva';
-import {Form, Input, Button, Select} from 'antd';
+import {Form, Input, Button, Select} from 'antd/lib';
 import './Login.less';
 
 const {Option} = Select;

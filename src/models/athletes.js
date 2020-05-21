@@ -1,5 +1,5 @@
 import * as athletes from '../services/athletes';
-import {message} from 'antd';
+import {message} from 'antd/lib';
 import * as judge from "../services/judge";
 
 export default {

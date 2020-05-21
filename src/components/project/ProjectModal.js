@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, Input, Select} from 'antd';
+import {Modal, Input, Select} from 'antd/lib';
 import '../style.less'
 
 const Option = Select.Option;

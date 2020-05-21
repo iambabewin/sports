@@ -1,5 +1,5 @@
 import * as judge from '../services/judge';
-import {message} from 'antd';
+import {message} from 'antd/lib';
 
 export default {
   namespace: 'judge',

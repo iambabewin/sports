@@ -1,5 +1,5 @@
 import * as winners from '../services/winners';
-import {message} from 'antd';
+import {message} from 'antd/lib';
 
 export default {
   namespace: 'winners',

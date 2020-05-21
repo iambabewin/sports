@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'dva';
 import '../style.less';
-import {Table, Button, Popconfirm} from 'antd';
+import {Table, Button, Popconfirm} from 'antd/lib';
 import JoinListModal from "./JoinListModal";
 
 const limit = 8;

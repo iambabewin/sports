@@ -1,8 +1,8 @@
 import React from 'react';
-import {Modal, Input} from 'antd';
+import {Modal, Input} from 'antd/lib';
 import '../style.less'
 import {connect} from "dva";
-import {Select} from 'antd';
+import {Select} from 'antd/lib';
 
 const Option = Select.Option;
 const token = window.localStorage.getItem("token");

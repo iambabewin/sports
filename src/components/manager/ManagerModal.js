@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'dva';
-import {Modal, Input, Select} from 'antd';
+import {Modal, Input, Select} from 'antd/lib';
 import '../style.less'
 
 const Option = Select.Option;
